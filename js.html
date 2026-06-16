@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | JavaScript Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notes_js.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="auth-check.js"></script>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Academy</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="regist.html">Register</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html" class="active">JavaScript</a></li>
+        </ul>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header js-header">
+        <span class="lang-badge">Module 3</span>
+        <h1>JavaScript Basics</h1>
+        <p>JavaScript makes your pages interactive. It's the only language that runs directly in the browser — and it's what brings HTML and CSS to life.</p>
+    </div>
+
+    <!-- NOTES CONTENT -->
+    <main class="notes-container">
+
+        <!-- SECTION 1 -->
+        <div class="note-card">
+            <h2><span class="num">01</span> What is JavaScript?</h2>
+            <p>JavaScript (JS) is a <strong>programming language</strong> that runs in the browser. While HTML structures content and CSS styles it, JavaScript makes things <em>happen</em> — buttons that respond to clicks, menus that open and close, content that updates without reloading the page.</p>
+            <p>You add JavaScript to your HTML page like this:</p>
+            <div class="code-block">
+                <div class="code-header">Linking JS to HTML</div>
+                <pre><code>&lt;!-- Always place this just before the closing &lt;/body&gt; tag --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <div class="tip-box">
+                💡 Placing the <code>&lt;script&gt;</code> tag at the <strong>bottom</strong> of the body means the HTML loads first. If you put it in the <code>&lt;head&gt;</code>, the JS might try to find elements that don't exist yet.
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="note-card">
+            <h2><span class="num">02</span> Variables</h2>
+            <p>Variables store data so you can use it later. In modern JavaScript, we use <code>let</code> and <code>const</code>.</p>
+            <div class="code-block">
+                <div class="code-header">Declaring Variables</div>
+                <pre><code>// const = value that won't change
+const siteName = "DevAcademy";
+const year = 2026;
+
+// let = value that can change later
+let score = 0;
+score = 10; // this is fine
+
+// var = old way, avoid using it
+var oldStyle = "not recommended";</code></pre>
+            </div>
+            <table class="notes-table">
+                <thead>
+                    <tr><th>Keyword</th><th>Can be changed?</th><th>When to use</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>const</code></td><td>No</td><td>Most of the time — names, fixed values</td></tr>
+                    <tr><td><code>let</code></td><td>Yes</td><td>Counters, scores, things that update</td></tr>
+                    <tr><td><code>var</code></td><td>Yes</td><td>Avoid — old, causes bugs</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="note-card">
+            <h2><span class="num">03</span> Data Types</h2>
+            <p>JavaScript works with different kinds of data. Here are the ones you'll see most:</p>
+            <div class="code-block">
+                <div class="code-header">Common Data Types</div>
+                <pre><code>const name    = "Sarah";        // String (text)
+const age     = 21;             // Number
+const isReady = true;           // Boolean (true or false)
+const colors  = ["red", "blue"]; // Array (a list)
+const user    = {               // Object (key-value pairs)
+  name: "Sarah",
+  age: 21
+};</code></pre>
+            </div>
+            <div class="tip-box">
+                💡 To check what type something is, use <code>typeof</code>: <br>
+                <code>typeof "hello"</code> → <code>"string"</code> &nbsp;|&nbsp; <code>typeof 42</code> → <code>"number"</code>
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="note-card">
+            <h2><span class="num">04</span> Functions</h2>
+            <p>A function is a <strong>reusable block of code</strong>. You define it once, then call it whenever you need it.</p>
+            <div class="code-block">
+                <div class="code-header">Defining & Calling Functions</div>
+                <pre><code>// Define the function
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+// Call the function
+greet("Alex");   // prints: Hello, Alex!
+greet("Sarah");  // prints: Hello, Sarah!
+
+// Arrow function (modern, shorter syntax)
+const add = (a, b) => {
+  return a + b;
+};
+
+console.log(add(3, 5)); // prints: 8</code></pre>
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="note-card">
+            <h2><span class="num">05</span> DOM Manipulation</h2>
+            <p>The <strong>DOM</strong> (Document Object Model) is how JavaScript sees and interacts with your HTML. You can select elements, change their content, or update their styles — all with JS.</p>
+            <div class="code-block">
+                <div class="code-header">Selecting & Changing Elements</div>
+                <pre><code>// Select an element by its ID
+const title = document.getElementById("main-title");
+
+// Select by class name (returns a list)
+const cards = document.querySelectorAll(".card");
+
+// Change text content
+title.textContent = "Welcome to DevAcademy!";
+
+// Change a CSS style
+title.style.color = "teal";
+
+// Add or remove a CSS class
+title.classList.add("highlight");
+title.classList.remove("highlight");
+title.classList.toggle("highlight"); // switches on/off</code></pre>
+            </div>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="note-card">
+            <h2><span class="num">06</span> Events & Event Listeners</h2>
+            <p>Events are things that happen in the browser — a click, a keypress, a hover. You can tell JavaScript to <strong>listen</strong> for these and run code when they happen.</p>
+            <div class="code-block">
+                <div class="code-header">Adding Event Listeners</div>
+                <pre><code>const btn = document.getElementById("my-button");
+
+// When the button is clicked, run this function
+btn.addEventListener("click", () => {
+  alert("Button was clicked!");
+});
+
+// Common event types:
+// "click"      → mouse click
+// "mouseover"  → mouse hovers over element
+// "keydown"    → keyboard key is pressed
+// "submit"     → form is submitted
+// "DOMContentLoaded" → page has fully loaded</code></pre>
+            </div>
+
+            <!-- LIVE DEMO -->
+            <p style="margin-top: 1.2rem;">Try it yourself — click the button below:</p>
+            <div class="demo-area">
+                <button id="demo-btn" class="demo-button">Click Me!</button>
+                <p id="demo-output" class="demo-output">Waiting for a click...</p>
+            </div>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="note-card">
+            <h2><span class="num">07</span> Conditionals & Loops</h2>
+            <p>Use <code>if/else</code> to make decisions, and loops to repeat actions.</p>
+            <div class="code-block">
+                <div class="code-header">if / else</div>
+                <pre><code>const score = 85;
+
+if (score >= 90) {
+  console.log("Grade: A");
+} else if (score >= 75) {
+  console.log("Grade: B");  // this runs
+} else {
+  console.log("Grade: C");
+}</code></pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header">for loop</div>
+                <pre><code>const courses = ["HTML", "CSS", "JavaScript"];
+
+for (let i = 0; i < courses.length; i++) {
+  console.log("Module: " + courses[i]);
+}
+
+// Output:
+// Module: HTML
+// Module: CSS
+// Module: JavaScript</code></pre>
+            </div>
+        </div>
+
+        <!-- RECAP -->
+        <div class="recap-box">
+            <h3>📝 Quick Recap</h3>
+            <ul>
+                <li>JavaScript makes pages <strong>interactive</strong> — it runs in the browser</li>
+                <li>Use <code>const</code> for fixed values, <code>let</code> for values that change</li>
+                <li><strong>Functions</strong> are reusable blocks of code you can call anytime</li>
+                <li>The <strong>DOM</strong> lets JS read and change your HTML elements</li>
+                <li><strong>Event listeners</strong> respond to user actions like clicks and keypresses</li>
+                <li>Use <code>if/else</code> for decisions and <code>for</code> loops to repeat actions</li>
+            </ul>
+        </div>
+
+        <!-- COMPLETION MESSAGE -->
+        <div class="completion-box">
+            <div class="completion-icon">🎉</div>
+            <h3>You've completed all 3 modules!</h3>
+            <p>You now know the three building blocks of every website on the internet. HTML, CSS, and JavaScript — that's the full foundation. Keep building, keep experimenting.</p>
+            <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+
+        <!-- PAGE NAV -->
+        <div class="page-nav">
+            <a href="css.html" class="btn-nav prev">← Back: CSS</a>
+            <a href="index.html" class="btn-nav next">Home →</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 DevAcademy — Built for learners, by learners.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // LIVE DEMO for Section 6
+        const demoBtn = document.getElementById('demo-btn');
+        const demoOutput = document.getElementById('demo-output');
+        let clickCount = 0;
+
+        demoBtn.addEventListener('click', () => {
+            clickCount++;
+            demoOutput.textContent = `You clicked ${clickCount} time${clickCount > 1 ? 's' : ''}! The event listener is working! ✅`;
+            demoOutput.style.color = 'var(--accent)';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | Learn Web Development</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Academy</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="regist.html">Register</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+        </ul>
+        <a href="#" onclick="logOutUser()">Log Out / Reset Demo</a>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="badge">Free Course • 3 Modules</span>
+            <h1>Build Websites<br>From <span class="highlight">Scratch.</span></h1>
+            <p>Learn HTML, CSS, and JavaScript step by step. No experience needed — just curiosity and a browser.</p>
+            <a href="html.html" class="btn">Start Learning →</a>
+        </div>
+        <div class="hero-graphic">
+            <div class="code-box">
+                <p><span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span></p>
+                <p><span class="prop">color</span>: <span class="val">teal</span>;</p>
+                <p><span class="fn">console</span>.log(<span class="val">"Let's go!"</span>);</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section class="courses">
+        <h2>What You'll Learn</h2>
+        <div class="card-container">
+
+            <div class="card">
+                <div class="card-icon">🏗️</div>
+                <h3>HTML</h3>
+                <p>The skeleton of every webpage. Learn tags, structure, and how to organize content properly.</p>
+                <a href="html.html" class="card-link">Go to notes →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>CSS</h3>
+                <p>Make things look good. Learn colors, fonts, layouts, and how to make pages responsive.</p>
+                <a href="css.html" class="card-link">Go to notes →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>Bring your pages to life. Learn how to add interactivity, handle clicks, and manipulate the DOM.</p>
+                <a href="js.html" class="card-link">Go to notes →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 DevAcademy — Built for learners, by learners.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

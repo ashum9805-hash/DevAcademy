@@ -1,0 +1,293 @@
+:root {
+    --bg: #f5f0e8;
+    --bg2: #eae4d8;
+    --text: #1a1a2e;
+    --text2: #555577;
+    --accent: #e05c2a;
+    --accent2: #c44a1a;
+    --card-bg: #ffffff;
+    --border: #d4cec4;
+    --code-bg: #1a1a2e;
+}
+
+[data-theme="dark"] {
+    --bg: #0f0f1a;
+    --bg2: #1a1a2e;
+    --text: #f0ece0;
+    --text2: #9990bb;
+    --accent: #ff7043;
+    --accent2: #e05c2a;
+    --card-bg: #1a1a2e;
+    --border: #2a2a4e;
+    --code-bg: #0a0a15;
+}
+
+/* 2. RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* 3. NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--bg);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text2);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+#theme-toggle {
+    background: none;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+#theme-toggle:hover {
+    transform: rotate(20deg);
+    border-color: var(--accent);
+}
+
+/* 4. HERO SECTION */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 2.5rem;
+    gap: 3rem;
+    background-color: var(--bg);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.hero-text h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+}
+
+.highlight {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.hero-text p {
+    color: var(--text2);
+    font-size: 1.1rem;
+    max-width: 480px;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    background: var(--accent2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(224, 92, 42, 0.3);
+}
+
+/* 5. HERO GRAPHIC (Code Box) */
+.hero-graphic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.code-box {
+    background: var(--code-bg);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    line-height: 2.2;
+    border: 2px solid var(--border);
+    min-width: 300px;
+}
+
+.tag  { color: #64b5f6; }
+.prop { color: #ce93d8; }
+.val  { color: #a5d6a7; }
+.fn   { color: #ffcc02; }
+
+/* 6. COURSES SECTION */
+.courses {
+    padding: 5rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.courses h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+}
+
+.card p {
+    color: var(--text2);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.card-link {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* 7. FOOTER */
+footer {
+    background: var(--bg2);
+    border-top: 2px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    color: var(--text2);
+    font-size: 0.9rem;
+}
+
+/* 8. RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .hero-text p {
+        margin: 0 auto 2rem auto;
+    }
+    .nav-links {
+        display: none;
+    }
+    .code-box {
+        font-size: 0.85rem;
+        min-width: unset;
+        width: 100%;
+    }
+}
+.regist{
+    background: transparent;
+    size: 12rem;
+    
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | CSS Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notes_2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="auth-check.js"></script>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Academy</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="regist.html">Register</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html" class="active">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+        </ul>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header css-header">
+        <span class="lang-badge">Module 2</span>
+        <h1>CSS Basics</h1>
+        <p>CSS is what makes websites look good. It controls colors, fonts, spacing, layouts, and even animations.</p>
+    </div>
+
+    <!-- NOTES CONTENT -->
+    <main class="notes-container">
+
+        <!-- SECTION 1 -->
+        <div class="note-card">
+            <h2><span class="num">01</span> What is CSS?</h2>
+            <p>CSS stands for <strong>Cascading Style Sheets</strong>. While HTML builds the structure of a page, CSS controls how it <em>looks</em>. Think of HTML as the walls of a house and CSS as the paint, furniture, and decoration.</p>
+            <p>You link a CSS file to your HTML page like this:</p>
+            <div class="code-block">
+                <div class="code-header">Linking CSS to HTML</div>
+                <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="note-card">
+            <h2><span class="num">02</span> Selectors & Properties</h2>
+            <p>CSS works by <strong>selecting</strong> an HTML element, then applying <strong>properties</strong> to it. The basic syntax looks like this:</p>
+            <div class="code-block">
+                <div class="code-header">CSS Syntax</div>
+                <pre><code>selector {
+  property: value;
+}</code></pre>
+            </div>
+            <p>Here are the 3 most common types of selectors:</p>
+            <table class="notes-table">
+                <thead>
+                    <tr>
+                        <th>Selector</th>
+                        <th>Targets</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>element</code></td>
+                        <td>All tags of that type</td>
+                        <td><code>p { color: gray; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>.class</code></td>
+                        <td>Elements with that class</td>
+                        <td><code>.card { padding: 20px; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>#id</code></td>
+                        <td>One specific element</td>
+                        <td><code>#header { font-size: 2rem; }</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="note-card">
+            <h2><span class="num">03</span> Colors, Fonts & Spacing</h2>
+            <p>These are the properties you'll use most as a beginner. They cover the look and feel of almost everything.</p>
+            <div class="code-block">
+                <div class="code-header">Common Properties</div>
+                <pre><code>p {
+  /* Text */
+  color: #333333;          /* text color */
+  font-size: 18px;         /* text size */
+  font-family: sans-serif; /* font style */
+  font-weight: bold;       /* bold text */
+  text-align: center;      /* align text */
+
+  /* Spacing */
+  margin: 20px;            /* space OUTSIDE the element */
+  padding: 10px;           /* space INSIDE the element */
+
+  /* Box */
+  background-color: teal;  /* background color */
+  border: 2px solid black; /* border around element */
+  border-radius: 8px;      /* rounded corners */
+}</code></pre>
+            </div>
+            <div class="tip-box">
+                💡 <strong>margin vs padding:</strong> Margin pushes things away from the outside. Padding adds breathing room on the inside. Imagine a picture frame — padding is the white mat inside, margin is the gap between the frame and the wall.
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="note-card">
+            <h2><span class="num">04</span> The Box Model</h2>
+            <p>Every HTML element is treated as a <strong>box</strong>. That box has 4 layers, from inside to outside:</p>
+            <div class="box-model-demo">
+                <div class="bm-margin">
+                    <span class="bm-label">Margin</span>
+                    <div class="bm-border">
+                        <span class="bm-label">Border</span>
+                        <div class="bm-padding">
+                            <span class="bm-label">Padding</span>
+                            <div class="bm-content">Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-block" style="margin-top: 1.5rem;">
+                <div class="code-header">Box Model in CSS</div>
+                <pre><code>.box {
+  width: 200px;         /* content width */
+  padding: 20px;        /* space inside */
+  border: 3px solid;    /* the border line */
+  margin: 30px;         /* space outside */
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="note-card">
+            <h2><span class="num">05</span> Flexbox Layout</h2>
+            <p><strong>Flexbox</strong> is the easiest way to arrange elements side by side or control spacing between them. You apply it to the <em>parent</em> container.</p>
+            <div class="code-block">
+                <div class="code-header">Flexbox Example</div>
+                <pre><code>.container {
+  display: flex;
+  justify-content: center;  /* horizontal alignment */
+  align-items: center;      /* vertical alignment */
+  gap: 20px;                /* space between children */
+}</code></pre>
+            </div>
+            <p>Common <code>justify-content</code> values:</p>
+            <table class="notes-table">
+                <thead>
+                    <tr><th>Value</th><th>What it does</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>flex-start</code></td><td>Align to the left (default)</td></tr>
+                    <tr><td><code>flex-end</code></td><td>Align to the right</td></tr>
+                    <tr><td><code>center</code></td><td>Center everything</td></tr>
+                    <tr><td><code>space-between</code></td><td>Spread items out, no gaps at edges</td></tr>
+                    <tr><td><code>space-around</code></td><td>Equal space around each item</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="note-card">
+            <h2><span class="num">06</span> Hover Effects & Transitions</h2>
+            <p>The <code>:hover</code> pseudo-class lets you style an element when the user hovers over it. Pair it with <code>transition</code> to make the change smooth.</p>
+            <div class="code-block">
+                <div class="code-header">Hover + Transition</div>
+                <pre><code>button {
+  background: lightcoral;
+  transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background: teal;
+  transform: translateY(-5px); /* moves up 5px */
+}</code></pre>
+            </div>
+            <div class="tip-box">
+                💡 <strong>transition</strong> goes on the <em>original</em> element, not the hover state. That way the animation plays both when entering AND leaving the hover.
+            </div>
+        </div>
+
+        <!-- RECAP -->
+        <div class="recap-box">
+            <h3>📝 Quick Recap</h3>
+            <ul>
+                <li>CSS <strong>selects</strong> HTML elements and applies styles to them</li>
+                <li>Use <strong>classes</strong> (<code>.name</code>) for reusable styles, <strong>IDs</strong> (<code>#name</code>) for unique ones</li>
+                <li><strong>margin</strong> = space outside, <strong>padding</strong> = space inside</li>
+                <li>Every element is a <strong>box</strong> with content, padding, border, and margin</li>
+                <li><strong>Flexbox</strong> makes layouts easy — apply it to the parent container</li>
+                <li>Use <code>transition</code> to make hover effects smooth</li>
+            </ul>
+        </div>
+
+        <!-- PAGE NAV -->
+        <div class="page-nav">
+            <a href="html.html" class="btn-nav prev">← Back: HTML</a>
+            <a href="js.html" class="btn-nav next">Next: JavaScript →</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 DevAcademy — Built for learners, by learners.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

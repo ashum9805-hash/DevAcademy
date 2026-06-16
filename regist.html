@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | Sign In</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="regist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Academy</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+        </ul>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- AUTH WRAPPER -->
+    <div class="auth-wrapper">
+
+        <!-- STEP 1: LOGIN FORM -->
+        <div id="login-box" class="auth-card">
+            <div class="auth-icon">🔐</div>
+            <h2>Sign In to DevAcademy</h2>
+            <p class="auth-subtitle">Create your account to access all course notes.</p>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="At least 3 characters, no spaces">
+                <span class="field-error" id="username-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="At least 6 characters">
+                <span class="field-error" id="password-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Repeat your password">
+                <span class="field-error" id="confirm-error"></span>
+            </div>
+
+            <label class="show-password-toggle">
+                <input type="checkbox" id="show-passwords" onchange="togglePasswords(this)">
+                Show passwords
+            </label>
+
+            <!-- General error box -->
+            <div class="error-box hidden" id="general-error"></div>
+
+            <button type="button" onclick="simulateLogin()">Sign In / Register</button>
+        </div>
+
+        <!-- STEP 2: WELCOME BOX (hidden until login) -->
+        <div id="homepage-content" class="auth-card hidden">
+            <div class="auth-icon">🎉</div>
+            <h2 id="welcome-message">Welcome!</h2>
+            <p class="success-msg">✓ Successfully registered</p>
+            <p class="auth-subtitle">You now have full access to all DevAcademy course notes. Click below to continue.</p>
+            <button type="button" onclick="registerUser()">Continue to Notes →</button>
+            <button type="button" class="btn-secondary" onclick="logOutUser()">Back to Home</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 DevAcademy — Built for learners, by learners.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function togglePasswords(checkbox) {
+            const type = checkbox.checked ? 'text' : 'password';
+            document.getElementById('password').type = type;
+            document.getElementById('confirm-password').type = type;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="auth-check.js"></script>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Academy</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="regist.html">Register</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+            <li><a href="quiz.html" class="active">Quiz</a></li>
+        </ul>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header quiz-header">
+        <span class="lang-badge">Challenge</span>
+        <h1>Knowledge Quiz</h1>
+        <p>15 questions covering HTML, CSS, and JavaScript — all mixed up. Let's see how much you remember!</p>
+    </div>
+
+    <!-- QUIZ WRAPPER -->
+    <main class="quiz-container">
+
+        <!-- INTRO CARD -->
+        <div id="quiz-intro" class="quiz-card intro-card">
+            <div class="intro-icon">🧠</div>
+            <h2>Ready to test yourself?</h2>
+            <p>This quiz has <strong>15 questions</strong> pulled from all 3 modules. Questions are mixed — no grouping by topic, so stay sharp!</p>
+            <ul class="intro-rules">
+                <li>✅ Pick the best answer for each question</li>
+                <li>✅ You'll see your result at the end</li>
+                <li>✅ You can retake it as many times as you want</li>
+            </ul>
+            <button class="quiz-btn" onclick="startQuiz()">Start Quiz →</button>
+        </div>
+
+        <!-- QUESTION AREA -->
+        <div id="quiz-area" class="hidden">
+
+            <!-- Progress Bar -->
+            <div class="progress-wrap">
+                <div class="progress-info">
+                    <span id="q-counter">Question 1 of 15</span>
+                    <span id="q-topic" class="topic-tag">HTML</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="quiz-card question-card">
+                <p id="question-text" class="question-text"></p>
+                <div id="options-list" class="options-list"></div>
+                <div id="feedback-box" class="feedback-box hidden"></div>
+                <button class="quiz-btn next-btn hidden" id="next-btn" onclick="nextQuestion()">Next →</button>
+            </div>
+
+        </div>
+
+        <!-- RESULTS CARD -->
+        <div id="quiz-results" class="quiz-card results-card hidden">
+            <div id="result-icon" class="result-icon"></div>
+            <h2 id="result-title"></h2>
+            <p id="result-subtitle" class="auth-subtitle"></p>
+            <div class="score-display">
+                <span id="score-num" class="score-num"></span>
+                <span class="score-label">out of 15</span>
+            </div>
+            <div id="score-breakdown" class="score-breakdown"></div>
+            <div class="results-actions">
+                <button class="quiz-btn" onclick="retakeQuiz()">Retake Quiz 🔁</button>
+                <a href="index.html" class="quiz-btn quiz-btn-secondary">Back to Home</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 DevAcademy — Built for learners, by learners.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+
+        // =============================================
+        // QUIZ DATA — mixed across HTML, CSS, and JS
+        // =============================================
+        const questions = [
+            {
+                topic: "CSS",
+                q: "Which CSS property controls the space INSIDE an element, between its content and its border?",
+                options: ["margin", "padding", "spacing", "border-gap"],
+                answer: 1
+            },
+            {
+                topic: "HTML",
+                q: "What does HTML stand for?",
+                options: [
+                    "HyperText Markup Language",
+                    "HighText Machine Language",
+                    "HyperText Managing Links",
+                    "HyperText Modern Layout"
+                ],
+                answer: 0
+            },
+            {
+                topic: "JS",
+                q: "Which keyword should you use for a variable whose value will NEVER change?",
+                options: ["var", "let", "const", "fixed"],
+                answer: 2
+            },
+            {
+                topic: "HTML",
+                q: "Which of these is a semantic HTML tag?",
+                options: ["<div>", "<span>", "<section>", "<box>"],
+                answer: 2
+            },
+            {
+                topic: "CSS",
+                q: "You want to arrange child elements side by side. Which CSS property do you apply to the PARENT container?",
+                options: ["display: block", "display: flex", "float: left", "position: inline"],
+                answer: 1
+            },
+            {
+                topic: "JS",
+                q: "Where is the best place to put your <script> tag to make sure all HTML elements exist before your JS runs?",
+                options: [
+                    "Inside the <head> tag",
+                    "Before the <html> tag",
+                    "Just before the closing </body> tag",
+                    "After the </html> tag"
+                ],
+                answer: 2
+            },
+            {
+                topic: "CSS",
+                q: "What is the correct CSS syntax?",
+                options: [
+                    "p { color = red; }",
+                    "p: color red;",
+                    "p { color: red; }",
+                    "#p color: red;"
+                ],
+                answer: 2
+            },
+            {
+                topic: "HTML",
+                q: "Which HTML tag is used to link an external CSS file to a page?",
+                options: ["<style>", "<css>", "<link>", "<script>"],
+                answer: 2
+            },
+            {
+                topic: "JS",
+                q: "Which method lets you select an HTML element by its ID in JavaScript?",
+                options: [
+                    "document.getClass('id')",
+                    "document.getElementById('id')",
+                    "document.findElement('id')",
+                    "document.select('#id')"
+                ],
+                answer: 1
+            },
+            {
+                topic: "CSS",
+                q: "In the CSS box model, what is the correct order from the inside out?",
+                options: [
+                    "Content → Border → Padding → Margin",
+                    "Margin → Padding → Border → Content",
+                    "Content → Padding → Border → Margin",
+                    "Border → Content → Padding → Margin"
+                ],
+                answer: 2
+            },
+            {
+                topic: "HTML",
+                q: "What is the purpose of the alt attribute on an <img> tag?",
+                options: [
+                    "It sets the image size",
+                    "It links to another image if this one fails",
+                    "It describes the image for accessibility and SEO",
+                    "It adds a caption below the image"
+                ],
+                answer: 2
+            },
+            {
+                topic: "JS",
+                q: "What will typeof 42 return?",
+                options: ['"number"', '"integer"', '"string"', '"value"'],
+                answer: 0
+            },
+            {
+                topic: "HTML",
+                q: "Which tag creates the LARGEST heading on a page?",
+                options: ["<heading>", "<h6>", "<h1>", "<title>"],
+                answer: 2
+            },
+            {
+                topic: "JS",
+                q: "Which of these correctly adds a click event listener to a button?",
+                options: [
+                    'btn.onClick("click", doSomething)',
+                    'btn.addEventListener("click", doSomething)',
+                    'btn.on("click", doSomething)',
+                    'btn.listen("click", doSomething)'
+                ],
+                answer: 1
+            },
+            {
+                topic: "CSS",
+                q: "The transition property should be placed on the ______ element, not the :hover state.",
+                options: ["child", "parent", "original / base", ":after"],
+                answer: 2
+            }
+        ];
+
+        // =============================================
+        // QUIZ STATE
+        // =============================================
+        let currentQ = 0;
+        let score = 0;
+        let answered = false;
+        let topicScores = { HTML: { correct: 0, total: 0 }, CSS: { correct: 0, total: 0 }, JS: { correct: 0, total: 0 } };
+
+        function startQuiz() {
+            currentQ = 0;
+            score = 0;
+            answered = false;
+            topicScores = { HTML: { correct: 0, total: 0 }, CSS: { correct: 0, total: 0 }, JS: { correct: 0, total: 0 } };
+
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-area').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQ];
+            answered = false;
+
+            // Progress
+            document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+            document.getElementById('q-topic').textContent = q.topic;
+            document.getElementById('q-topic').className = `topic-tag topic-${q.topic.toLowerCase()}`;
+            const pct = (currentQ / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+
+            // Question text
+            document.getElementById('question-text').textContent = q.q;
+
+            // Options
+            const optsList = document.getElementById('options-list');
+            optsList.innerHTML = '';
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(i);
+                optsList.appendChild(btn);
+            });
+
+            // Hide feedback and next
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = questions[currentQ];
+            const optBtns = document.querySelectorAll('.option-btn');
+            const feedbackBox = document.getElementById('feedback-box');
+
+            // Track topic score
+            topicScores[q.topic].total++;
+
+            optBtns.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.answer) btn.classList.add('correct');
+                if (i === index && index !== q.answer) btn.classList.add('wrong');
+            });
+
+            if (index === q.answer) {
+                score++;
+                topicScores[q.topic].correct++;
+                feedbackBox.className = 'feedback-box feedback-correct';
+                feedbackBox.textContent = '✅ Correct!';
+            } else {
+                feedbackBox.className = 'feedback-box feedback-wrong';
+                feedbackBox.textContent = `❌ Not quite — the correct answer was: "${q.options[q.answer]}"`;
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < questions.length) {
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-area').classList.add('hidden');
+            const resultsCard = document.getElementById('quiz-results');
+            resultsCard.classList.remove('hidden');
+
+            document.getElementById('progress-fill').style.width = '100%';
+
+            const pct = Math.round((score / questions.length) * 100);
+            document.getElementById('score-num').textContent = score;
+
+            let icon, title, subtitle;
+            if (pct === 100) {
+                icon = '🏆'; title = 'Perfect Score!'; subtitle = "You aced every single question. You're unstoppable!";
+            } else if (pct >= 80) {
+                icon = '🎉'; title = 'Great Job!'; subtitle = "You really know your stuff. Just a couple to brush up on!";
+            } else if (pct >= 60) {
+                icon = '👍'; title = 'Solid Effort!'; subtitle = "Good foundation — go back over the sections you missed.";
+            } else {
+                icon = '📖'; title = 'Keep Studying!'; subtitle = "No worries — revisit the notes and give it another shot!";
+            }
+
+            document.getElementById('result-icon').textContent = icon;
+            document.getElementById('result-title').textContent = title;
+            document.getElementById('result-subtitle').textContent = subtitle;
+
+            // Topic breakdown
+            const breakdown = document.getElementById('score-breakdown');
+            breakdown.innerHTML = `
+                <div class="breakdown-item">
+                    <span class="breakdown-label">🏗️ HTML</span>
+                    <span class="breakdown-score">${topicScores.HTML.correct} / ${topicScores.HTML.total}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">🎨 CSS</span>
+                    <span class="breakdown-score">${topicScores.CSS.correct} / ${topicScores.CSS.total}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">⚡ JavaScript</span>
+                    <span class="breakdown-score">${topicScores.JS.correct} / ${topicScores.JS.total}</span>
+                </div>
+            `;
+        }
+
+        function retakeQuiz() {
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-intro').classList.remove('hidden');
+        }
+
+    </script>
+</body>
+</html>
