@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DevAcademy | Playground</title>
+  <link rel="stylesheet" href="style.css"> <!-- global site styles -->
+  <link rel="stylesheet" href="playground.css"> <!-- playground layout -->
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Dev<span>Academy</span></div>
+    <ul class="nav-links">
+    <li><a href="index.html" id="nav-home">Home</a></li>
+    
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" id="nav-notes">Notes ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="html.html" id="nav-html">HTML</a></li>
+        <li><a href="css.html" id="nav-css">CSS</a></li>
+        <li><a href="js.html" id="nav-js">JavaScript</a></li>
+      </ul>
+    </li>
+
+    <li><a href="practice.html" id="nav-practice" class="active">Playground ⚡</a></li>
+    <li><a href="quiz.html" id="nav-quiz">Quiz</a></li>
+    <li><a href="members.html" id="nav-team">Team</a></li>
+    <li><a href="contact.html" id="nav-contact">Contact</a></li>
+  </ul>
+    <button id="theme-toggle">🌙</button>
+  </nav>
+
+  <header class="page-header contact-header">
+    <span class="lang-badge">Playground</span>
+    <h1>Try It Yourself</h1>
+    <p>Write HTML, CSS, or JS on the left — see the result instantly on the right.</p>
+  </header>
+
+  <div class="playground-wrapper">
+    <!-- Editor -->
+    <div class="editor-pane">
+      <textarea id="code">
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Load preview-only styles -->
+    <link rel="stylesheet" href="preview.css">
+  </head>
+  <body>
+    <h1>Hello DevAcademy!</h1>
+    <p>This is your first live preview.</p>
+    <button onclick="alert('Hello!')">Click Me</button>
+  </body>
+</html>
+      </textarea>
+      <button id="run-btn">Run Code ▶</button>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview-pane">
+      <iframe id="output"></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- theme toggle -->
+  <script src="playground.js"></script> <!-- playground logic -->
+</body>
+</html>

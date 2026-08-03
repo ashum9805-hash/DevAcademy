@@ -1,0 +1,48 @@
+.playground-wrapper {
+  display: flex;
+  height: calc(100vh - 200px);
+}
+
+.editor-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--border);
+  background: var(--card-bg);
+}
+
+.editor-pane textarea {
+  flex: 1;
+  padding: 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+  border: none;
+  outline: none;
+  resize: none;
+  background: var(--code-bg);
+  color: var(--text);
+}
+
+.editor-pane button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editor-pane button:hover {
+  background: var(--accent2);
+}
+
+.preview-pane {
+  flex: 1;
+  background: var(--bg);
+}
+
+.preview-pane iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
