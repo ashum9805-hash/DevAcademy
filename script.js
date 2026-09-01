@@ -16,6 +16,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+    
+    // Mobile dropdown menu toggle
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdownMenu = toggle.nextElementSibling;
+                if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
+                    dropdownMenu.classList.toggle('active');
+                }
+            }
+        });
+    });
+    
+    // Close mobile menu when link is clicked
+    const navLinks2 = document.querySelectorAll('.nav-links a');
+    navLinks2.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                if (hamburger) hamburger.textContent = '☰';
+            }
+        });
+    });
 });
 
 function simulateLogin() {
@@ -40,43 +75,35 @@ function simulateLogin() {
         usernameError.textContent = 'Username cannot be blank.';
         hasError = true;
     }
-    // 2. Username too short
     else if (username.length < 3) {
         usernameError.textContent = 'Username must be at least 3 characters.';
         hasError = true;
     }
-    // 3. Spaces in username
     else if (username.includes(' ')) {
         usernameError.textContent = 'Username cannot contain spaces.';
         hasError = true;
     }
 
-    // 4. Blank password
     if (password === '') {
         passwordError.textContent = 'Password cannot be blank.';
         hasError = true;
     }
-    // 5. Password too short
     else if (password.length < 6) {
         passwordError.textContent = 'Password must be at least 6 characters.';
         hasError = true;
     }
 
-    // 6. Confirm password blank
     if (confirm === '') {
         confirmError.textContent = 'Please confirm your password.';
         hasError = true;
     }
-    // 7. Passwords don't match
     else if (password !== confirm) {
         confirmError.textContent = 'Passwords do not match.';
         hasError = true;
     }
 
-    // --- STOP HERE IF ANY ERROR ---
     if (hasError) return;
 
-    // --- ALL GOOD: show welcome box with user's name ---
     const welcomeMessage = document.getElementById('welcome-message');
     welcomeMessage.textContent = `Welcome, ${username}! 👋`;
 
@@ -84,25 +111,18 @@ function simulateLogin() {
     document.getElementById('homepage-content').classList.remove('hidden');
 }
 
-// Runs when user clicks "Continue to Notes" — saves session and redirects
 function registerUser() {
-    // Mark user as logged in for this browser session
     sessionStorage.setItem("isRegistered", "true");
-
-    // Check if there was a page they originally wanted
     const savedPage = sessionStorage.getItem("redirectTarget");
 
     if (savedPage) {
-        // Clear the saved target then send them there
         sessionStorage.removeItem("redirectTarget");
         window.location.href = savedPage;
     } else {
-        // No saved target — just go home
         window.location.href = "index.html";
     }
 }
 
-// Logs the user out and returns to home
 function logOutUser() {
     sessionStorage.removeItem("isRegistered");
     sessionStorage.removeItem("redirectTarget");

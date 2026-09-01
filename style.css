@@ -83,6 +83,58 @@ body {
     border-bottom-color: var(--accent);
 }
 
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '';
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 0;
+    min-width: 200px;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid var(--border);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.2rem;
+    border: none;
+    font-size: 0.9rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: var(--bg2);
+    color: var(--accent);
+    border-bottom: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
@@ -279,7 +331,7 @@ footer {
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem 1.5rem;
-        flex-wrap: wrap;
+        position: relative;
     }
     
     .hamburger {
@@ -289,7 +341,7 @@ footer {
     .nav-links {
         display: none;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         right: 0;
         flex-direction: column;
@@ -299,6 +351,7 @@ footer {
         gap: 0;
         width: 100%;
         z-index: 99;
+        margin-top: 0;
     }
     
     .nav-links.active {
@@ -314,6 +367,27 @@ footer {
         padding: 1rem 1.5rem;
         border: none;
         font-size: 1rem;
+        border-bottom: none;
+    }
+    
+    /* Mobile dropdown */
+    .dropdown-menu {
+        position: static;
+        display: none;
+        background: var(--bg2);
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .dropdown-menu.active {
+        display: flex;
+    }
+    
+    .dropdown-menu a {
+        padding: 0.8rem 2rem;
+        font-size: 0.85rem;
     }
     
     .hero {
@@ -344,8 +418,6 @@ footer {
     
     #theme-toggle {
         order: 3;
-        width: 100%;
-        margin-top: 1rem;
     }
 }
 
