@@ -83,6 +83,17 @@ body {
     border-bottom-color: var(--accent);
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.5rem;
+}
+
 #theme-toggle {
     background: none;
     border: 2px solid var(--border);
@@ -266,28 +277,97 @@ footer {
 
 /* 8. RESPONSIVE */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg);
+        border-bottom: 2px solid var(--border);
+        padding: 1rem 0;
+        gap: 0;
+        width: 100%;
+        z-index: 99;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 1rem 1.5rem;
+        border: none;
+        font-size: 1rem;
+    }
+    
     .hero {
         flex-direction: column;
         padding: 3rem 1.5rem;
         text-align: center;
     }
+    
     .hero-text h1 {
         font-size: 2.2rem;
     }
+    
     .hero-text p {
         margin: 0 auto 2rem auto;
     }
-    .nav-links {
-        display: none;
-    }
+    
     .code-box {
         font-size: 0.85rem;
         min-width: unset;
         width: 100%;
+        padding: 1.5rem 1rem;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    #theme-toggle {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
     }
 }
-.regist{
-    background: transparent;
-    size: 12rem;
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.1rem;
+    }
     
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .card-container {
+        gap: 1rem;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
 }

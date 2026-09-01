@@ -1,3 +1,4 @@
+/* CONSOLIDATED NOTES STYLESHEET - Used by HTML, CSS, and JavaScript lesson pages */
 
 .page-header {
     padding: 4rem 2.5rem;
@@ -137,6 +138,7 @@ code {
     border-collapse: collapse;
     margin-top: 1.2rem;
     font-size: 0.93rem;
+    overflow-x: auto;
 }
 
 .notes-table th {
@@ -254,11 +256,204 @@ code {
     box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
+/* BOX MODEL VISUAL DEMO (CSS page) */
+.box-model-demo {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.bm-margin {
+    background: rgba(224, 92, 42, 0.15);
+    border: 2px dashed var(--accent);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.bm-border {
+    background: rgba(42, 122, 224, 0.15);
+    border: 3px solid #2a7ae0;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+}
+
+.bm-padding {
+    background: rgba(42, 224, 120, 0.15);
+    border: 2px dashed #2ae078;
+    border-radius: 6px;
+    padding: 16px;
+    position: relative;
+}
+
+.bm-content {
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.bm-label {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+/* LIVE DEMO AREA (JS page) */
+.demo-area {
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.demo-button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.demo-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(224, 92, 42, 0.3);
+    background: var(--accent2);
+}
+
+.demo-output {
+    color: var(--text2);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* COMPLETION BOX (JS page) */
+.completion-box {
+    background: var(--bg2);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.completion-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.completion-box h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.completion-box p {
+    color: var(--text2);
+    max-width: 500px;
+    margin: 0 auto 1.5rem auto;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .page-header h1 { font-size: 2rem; }
-    .note-card { padding: 1.5rem; }
-    .two-col { grid-template-columns: 1fr; }
-    .page-nav { flex-direction: column; }
-    .btn-nav { text-align: center; }
+    .page-header {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 0.95rem;
+    }
+    
+    .note-card {
+        padding: 1.5rem;
+    }
+    
+    .notes-table {
+        font-size: 0.85rem;
+    }
+    
+    .notes-table th,
+    .notes-table td {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-nav {
+        flex-direction: column;
+    }
+    
+    .btn-nav {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .code-block {
+        margin: 1rem 0;
+    }
+    
+    .code-block pre {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
+    
+    .demo-area {
+        flex-direction: column;
+    }
+    
+    .demo-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .note-card {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .note-card h2 {
+        font-size: 1.1rem;
+    }
+    
+    .notes-table {
+        font-size: 0.8rem;
+    }
+    
+    .code-box {
+        font-size: 0.7rem;
+    }
 }
