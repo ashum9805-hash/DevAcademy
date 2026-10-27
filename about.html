@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevAcademy | About the Creator</title>
     <link rel="stylesheet" href="style.css">
@@ -10,7 +11,6 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
@@ -23,26 +23,23 @@
                     <li><a href="js.html">⚡ JavaScript</a></li>
                 </ul>
             </li>
-            <li><a href="practice.html">⚡ Trials</a></li>
+            <li><a href="practice.html">⚡ Playground</a></li>
             <li><a href="quiz.html">🧠 Quiz</a></li>
+            <li><a href="about.html" class="active">👨‍💻 About</a></li>
             <li><a href="contact.html">💬 Contact</a></li>
-            <li><a href="about.html" class="active">👨‍💻 About Creator</a></li>
+            <li><a href="regist.html">🔐 Register</a></li>
         </ul>
         <button class="hamburger">☰</button>
         <button id="theme-toggle">🌙</button>
     </nav>
 
-    <!-- PAGE HEADER -->
     <div class="page-header" style="background: linear-gradient(135deg, #e05c2a18, #e05c2a05);">
         <span class="lang-badge">Meet the Maker</span>
         <h1>About the Creator</h1>
         <p>The story behind DevAcademy — built by a passionate Grade 12 student.</p>
     </div>
 
-    <!-- MAIN CONTENT -->
     <main style="max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem;">
-
-        <!-- HERO SECTION -->
         <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 16px; padding: 3rem; margin-bottom: 3rem; text-align: center;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">👨‍💻</div>
             <h2 style="font-family: 'Space Mono', monospace; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text);">Kaleab Ashenafi</h2>
@@ -52,54 +49,31 @@
             </p>
         </div>
 
-        <!-- THE STORY -->
         <section style="margin-bottom: 3rem;">
             <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem; margin-bottom: 1.5rem;">
                 <h3 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">📖 The Story</h3>
                 <p style="color: var(--text2); margin-bottom: 1rem; line-height: 1.8;">
-                    What began as a group project assignment in Grade 11 became a personal mission. Due to circumstances that arose during the project, I took on the challenge of building DevAcademy entirely on my own — from concept to completion.
+                    What began as a group project assignment in Grade 11 became a personal mission. Due to circumstances that arose during the project, I took on the challenge of building DevAcademy myself.
                 </p>
                 <p style="color: var(--text2); line-height: 1.8;">
-                    The platform was created to make web development accessible to beginners. It teaches the three core technologies of the web — HTML, CSS, and JavaScript — in a structured, engaging way. Whether you're taking your first steps into coding or reviewing fundamentals, DevAcademy is here to guide you.
+                    The platform was created to make web development accessible to beginners. It teaches the three core technologies of the web — HTML, CSS, and JavaScript — in a structured, beginner-friendly way.
                 </p>
             </div>
         </section>
 
-        <!-- WHY DEVACADEMY? -->
         <section style="margin-bottom: 3rem;">
             <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem;">
                 <h3 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text);">🎯 Why DevAcademy?</h3>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span>
-                        <strong style="color: var(--text);">Structured Learning</strong><br>
-                        <span style="color: var(--text2); font-size: 0.95rem;">Lessons flow logically from basics to advanced concepts.</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span>
-                        <strong style="color: var(--text);">Hands-On Practice</strong><br>
-                        <span style="color: var(--text2); font-size: 0.95rem;">Write, test, and experiment with real code in the Playground.</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span>
-                        <strong style="color: var(--text);">Immediate Feedback</strong><br>
-                        <span style="color: var(--text2); font-size: 0.95rem;">Take the Quiz to test your knowledge and track progress.</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span>
-                        <strong style="color: var(--text);">Dark Mode Support</strong><br>
-                        <span style="color: var(--text2); font-size: 0.95rem;">Learn comfortably day or night with theme switching.</span>
-                    </li>
-                    <li style="padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span>
-                        <strong style="color: var(--text);">Mobile-Friendly</strong><br>
-                        <span style="color: var(--text2); font-size: 0.95rem;">Learn on any device — desktop, tablet, or phone.</span>
-                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span><strong style="color: var(--text);">Structured Learning</strong><br><span style="color: var(--text2); font-size: 0.95rem;">Lessons flow logically from basics to advanced concepts.</span></li>
+                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span><strong style="color: var(--text);">Hands-On Practice</strong><br><span style="color: var(--text2); font-size: 0.95rem;">Write, test, and experiment with real code in the Playground.</span></li>
+                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span><strong style="color: var(--text);">Immediate Feedback</strong><br><span style="color: var(--text2); font-size: 0.95rem;">Take the Quiz to test your knowledge and track progress.</span></li>
+                    <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span><strong style="color: var(--text);">Dark Mode Support</strong><br><span style="color: var(--text2); font-size: 0.95rem;">Learn comfortably day or night with theme switching.</span></li>
+                    <li style="padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">✓</span><strong style="color: var(--text);">Mobile-Friendly</strong><br><span style="color: var(--text2); font-size: 0.95rem;">Learn on any device — desktop, tablet, or phone.</span></li>
                 </ul>
             </div>
         </section>
 
-        <!-- TECH STACK -->
         <section style="margin-bottom: 3rem;">
             <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem;">
                 <h3 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text);">⚙️ Built With</h3>
@@ -125,7 +99,6 @@
             </div>
         </section>
 
-        <!-- CALL TO ACTION -->
         <div style="background: var(--bg2); border: 2px solid var(--accent); border-radius: 12px; padding: 2.5rem; text-align: center;">
             <h3 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">Ready to Learn?</h3>
             <p style="color: var(--text2); margin-bottom: 1.5rem; font-size: 1rem;">
@@ -133,7 +106,6 @@
             </p>
             <a href="html.html" class="btn">Start Learning →</a>
         </div>
-
     </main>
 
     <footer>

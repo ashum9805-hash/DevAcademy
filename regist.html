@@ -15,10 +15,21 @@
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="html.html">HTML</a></li>
-            <li><a href="css.html">CSS</a></li>
-            <li><a href="js.html">JavaScript</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">📚 Notes ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="html.html">🏗️ HTML</a></li>
+                    <li><a href="css.html">🎨 CSS</a></li>
+                    <li><a href="js.html">⚡ JavaScript</a></li>
+                </ul>
+            </li>
+            <li><a href="practice.html">⚡ Playground</a></li>
+            <li><a href="quiz.html">🧠 Quiz</a></li>
+            <li><a href="about.html">👨‍💻 About</a></li>
+            <li><a href="contact.html">💬 Contact</a></li>
+            <li><a href="regist.html" class="active">🔐 Register</a></li>
         </ul>
+        <button class="hamburger">☰</button>
         <button id="theme-toggle">🌙</button>
     </nav>
 
@@ -54,13 +65,11 @@
                 Show passwords
             </label>
 
-            <!-- General error box -->
             <div class="error-box hidden" id="general-error"></div>
 
             <button type="button" onclick="simulateLogin()">Sign In / Register</button>
         </div>
 
-        <!-- STEP 2: WELCOME BOX (hidden until login) -->
         <div id="homepage-content" class="auth-card hidden">
             <div class="auth-icon">🎉</div>
             <h2 id="welcome-message">Welcome!</h2>

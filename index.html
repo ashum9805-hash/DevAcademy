@@ -14,11 +14,21 @@
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="regist.html">Register</a></li>
-            <li><a href="html.html">HTML</a></li>
-            <li><a href="css.html">CSS</a></li>
-            <li><a href="js.html">JavaScript</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">📚 Notes ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="html.html">🏗️ HTML</a></li>
+                    <li><a href="css.html">🎨 CSS</a></li>
+                    <li><a href="js.html">⚡ JavaScript</a></li>
+                </ul>
+            </li>
+            <li><a href="practice.html">⚡ Playground</a></li>
+            <li><a href="quiz.html">🧠 Quiz</a></li>
+            <li><a href="about.html">👨‍💻 About</a></li>
+            <li><a href="contact.html">💬 Contact</a></li>
+            <li><a href="regist.html">🔐 Register</a></li>
         </ul>
+        <button class="hamburger">☰</button>
         <a href="#" onclick="logOutUser()">Log Out / Reset Demo</a>
         <button id="theme-toggle">🌙</button>
     </nav>

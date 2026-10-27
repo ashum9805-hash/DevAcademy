@@ -16,12 +16,21 @@
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="regist.html">Register</a></li>
-            <li><a href="html.html">HTML</a></li>
-            <li><a href="css.html">CSS</a></li>
-            <li><a href="js.html">JavaScript</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">📚 Notes ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="html.html">🏗️ HTML</a></li>
+                    <li><a href="css.html">🎨 CSS</a></li>
+                    <li><a href="js.html">⚡ JavaScript</a></li>
+                </ul>
+            </li>
+            <li><a href="practice.html">⚡ Playground</a></li>
+            <li><a href="quiz.html">🧠 Quiz</a></li>
+            <li><a href="about.html">👨‍💻 About</a></li>
+            <li><a href="contact.html" class="active">💬 Contact</a></li>
+            <li><a href="regist.html">🔐 Register</a></li>
         </ul>
+        <button class="hamburger">☰</button>
         <button id="theme-toggle">🌙</button>
     </nav>
 
@@ -32,12 +41,8 @@
         <p>Have a question, a suggestion, or just want to say hi? We'd love to hear from you.</p>
     </div>
 
-    <!-- CONTACT LAYOUT -->
     <main class="contact-wrapper">
-
-        <!-- LEFT: INFO CARDS -->
         <div class="contact-info">
-
             <div class="info-card">
                 <div class="info-icon">📬</div>
                 <h3>General Enquiries</h3>
@@ -58,13 +63,9 @@
                 <p>Want us to cover a new topic? We're always looking to improve.</p>
                 <span class="info-detail">ideas@devacademy.io</span>
             </div>
-
         </div>
 
-        <!-- RIGHT: FORM -->
         <div class="contact-form-wrap">
-
-            <!-- FORM STATE -->
             <div id="contact-form-box" class="auth-card contact-card">
                 <h2>Send a Message</h2>
                 <p class="auth-subtitle">Fill in the form below and we'll get back to you as soon as possible.</p>
@@ -102,7 +103,6 @@
                 <button type="button" onclick="sendMessage()">Send Message ✉️</button>
             </div>
 
-            <!-- SUCCESS STATE (hidden until submit) -->
             <div id="contact-success" class="auth-card contact-card hidden" style="text-align:center;">
                 <div class="auth-icon">✅</div>
                 <h2>Message Sent!</h2>
@@ -111,9 +111,7 @@
                 <button type="button" onclick="resetContactForm()">Send Another Message</button>
                 <a href="index.html" class="btn-secondary-link">Back to Home →</a>
             </div>
-
         </div>
-
     </main>
 
     <footer>
@@ -122,21 +120,18 @@
 
     <script src="script.js"></script>
     <script>
-
         function sendMessage() {
             const name    = document.getElementById('contact-name').value.trim();
             const email   = document.getElementById('contact-email').value.trim();
             const subject = document.getElementById('contact-subject').value;
             const message = document.getElementById('contact-message').value.trim();
-
-            const nameError    = document.getElementById('name-error');
-            const emailError   = document.getElementById('email-error');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
             const subjectError = document.getElementById('subject-error');
             const messageError = document.getElementById('message-error');
 
-            // Clear previous errors
-            nameError.textContent    = '';
-            emailError.textContent   = '';
+            nameError.textContent = '';
+            emailError.textContent = '';
             subjectError.textContent = '';
             messageError.textContent = '';
 
@@ -173,7 +168,6 @@
 
             if (hasError) return;
 
-            // Show success
             const topicLabels = {
                 general: 'General Enquiry',
                 bug: 'Bug Report',
@@ -181,23 +175,20 @@
                 other: 'Other'
             };
 
-            document.getElementById('success-detail').textContent =
-                `Thanks, ${name}! We'll reply to ${email} regarding your "${topicLabels[subject]}" shortly.`;
-
+            document.getElementById('success-detail').textContent = `Thanks, ${name}! We'll reply to ${email} regarding your "${topicLabels[subject]}" shortly.`;
             document.getElementById('contact-form-box').classList.add('hidden');
             document.getElementById('contact-success').classList.remove('hidden');
         }
 
         function resetContactForm() {
-            document.getElementById('contact-name').value    = '';
-            document.getElementById('contact-email').value   = '';
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-email').value = '';
             document.getElementById('contact-subject').value = '';
             document.getElementById('contact-message').value = '';
 
             document.getElementById('contact-success').classList.add('hidden');
             document.getElementById('contact-form-box').classList.remove('hidden');
         }
-
     </script>
 </body>
 </html>
