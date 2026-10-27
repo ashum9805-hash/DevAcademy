@@ -1,32 +1,3 @@
-const DEVACADEMY_USER_KEY = 'devacademy-user';
-
-function getStoredUser() {
-    try {
-        const saved = localStorage.getItem(DEVACADEMY_USER_KEY);
-        return saved ? JSON.parse(saved) : null;
-    } catch (error) {
-        return null;
-    }
-}
-
-function isUserLoggedIn() {
-    const user = getStoredUser();
-    return !!(user && user.loggedIn);
-}
-
-function saveUser(username) {
-    localStorage.setItem(DEVACADEMY_USER_KEY, JSON.stringify({
-        username,
-        loggedIn: true,
-        savedAt: Date.now()
-    }));
-}
-
-function clearSavedUser() {
-    localStorage.removeItem(DEVACADEMY_USER_KEY);
-    localStorage.removeItem('isRegistered');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -78,19 +49,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const savedUser = (() => {
+        try {
+            const raw = localStorage.getItem('devacademy-user');
+            return raw ? JSON.parse(raw) : null;
+        } catch (error) {
+            return null;
+        }
+    })();
+
+    const authStatus = document.getElementById('auth-status');
+    if (authStatus) {
+        authStatus.textContent = savedUser && savedUser.loggedIn
+            ? `Signed in as ${savedUser.username}`
+            : 'Guest mode';
+    }
+
     const loginBox = document.getElementById('login-box');
     const homepageContent = document.getElementById('homepage-content');
     const welcomeMessage = document.getElementById('welcome-message');
     if (loginBox && homepageContent && welcomeMessage) {
-        const user = getStoredUser();
-
-        if (user && user.loggedIn) {
-            welcomeMessage.textContent = `Welcome back, ${user.username}! 👋`;
+        if (savedUser && savedUser.loggedIn) {
+            welcomeMessage.textContent = `Welcome back, ${savedUser.username}! 👋`;
             loginBox.classList.add('hidden');
             homepageContent.classList.remove('hidden');
         }
     }
 });
+
+const DEVACADEMY_USER_KEY = 'devacademy-user';
+
+function getStoredUser() {
+    try {
+        const saved = localStorage.getItem(DEVACADEMY_USER_KEY);
+        return saved ? JSON.parse(saved) : null;
+    } catch (error) {
+        return null;
+    }
+}
+
+function isUserLoggedIn() {
+    const user = getStoredUser();
+    return !!(user && user.loggedIn);
+}
+
+function saveUser(username) {
+    localStorage.setItem(DEVACADEMY_USER_KEY, JSON.stringify({
+        username,
+        loggedIn: true,
+        savedAt: Date.now()
+    }));
+}
+
+function clearSavedUser() {
+    localStorage.removeItem(DEVACADEMY_USER_KEY);
+    localStorage.removeItem('isRegistered');
+}
 
 function simulateLogin() {
     const username = document.getElementById('username')?.value.trim();
@@ -142,11 +156,14 @@ function simulateLogin() {
     if (hasError) return;
 
     saveUser(username);
+
     const welcomeMessage = document.getElementById('welcome-message');
     if (welcomeMessage) welcomeMessage.textContent = `Welcome, ${username}! 👋`;
 
     const loginBox = document.getElementById('login-box');
     const homepageContent = document.getElementById('homepage-content');
+    const authStatus = document.getElementById('auth-status');
+    if (authStatus) authStatus.textContent = `Signed in as ${username}`;
     if (loginBox) loginBox.classList.add('hidden');
     if (homepageContent) homepageContent.classList.remove('hidden');
 }
@@ -170,11 +187,15 @@ function registerUser() {
 function continueAsGuest() {
     clearSavedUser();
     sessionStorage.removeItem('redirectTarget');
+    const authStatus = document.getElementById('auth-status');
+    if (authStatus) authStatus.textContent = 'Guest mode';
     window.location.href = 'index.html';
 }
 
 function logOutUser() {
     clearSavedUser();
     sessionStorage.removeItem('redirectTarget');
+    const authStatus = document.getElementById('auth-status');
+    if (authStatus) authStatus.textContent = 'Guest mode';
     window.location.href = 'index.html';
 }

@@ -11,7 +11,6 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
@@ -31,10 +30,10 @@
             <li><a href="regist.html">🔐 Register</a></li>
         </ul>
         <button class="hamburger">☰</button>
+        <span id="auth-status" class="auth-status">Guest mode</span>
         <button id="theme-toggle">🌙</button>
     </nav>
 
-    <!-- PAGE HEADER -->
     <div class="page-header js-header">
         <span class="lang-badge">Module 3</span>
         <h1>JavaScript Basics</h1>
@@ -42,114 +41,7 @@
     </div>
 
     <main class="notes-container">
-        <div class="note-card">
-            <h2><span class="num">01</span> What is JavaScript?</h2>
-            <p>JavaScript (JS) is a <strong>programming language</strong> that runs in the browser. It makes pages interactive and dynamic.</p>
-            <p>You add JavaScript to your HTML page like this:</p>
-            <div class="code-block">
-                <div class="code-header">Linking JS to HTML</div>
-                <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">02</span> Variables</h2>
-            <p>Variables store data so you can use it later. In modern JavaScript, we use <code>let</code> and <code>const</code>.</p>
-            <div class="code-block">
-                <div class="code-header">Declaring Variables</div>
-                <pre><code>const siteName = "DevAcademy";
-let score = 0;
-score = 10;</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">03</span> Data Types</h2>
-            <p>JavaScript works with different kinds of data.</p>
-            <div class="code-block">
-                <div class="code-header">Common Data Types</div>
-                <pre><code>const name = "Sarah";
-const age = 21;
-const isReady = true;
-const colors = ["red", "blue"];
-const user = { name: "Sarah", age: 21 };</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">04</span> Functions</h2>
-            <p>A function is a reusable block of code.</p>
-            <div class="code-block">
-                <div class="code-header">Defining & Calling Functions</div>
-                <pre><code>function greet(name) {
-  console.log("Hello, " + name + "!");
-}
-
-greet("Alex");</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">05</span> DOM Manipulation</h2>
-            <p>The <strong>DOM</strong> is how JavaScript interacts with the HTML on the page.</p>
-            <div class="code-block">
-                <div class="code-header">Selecting & Changing Elements</div>
-                <pre><code>const title = document.getElementById("main-title");
-title.textContent = "Welcome!";
-title.style.color = "teal";</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">06</span> Events & Event Listeners</h2>
-            <p>Events happen when a user clicks, types, or interacts with the page.</p>
-            <div class="code-block">
-                <div class="code-header">Adding Event Listeners</div>
-                <pre><code>const btn = document.getElementById("my-button");
-btn.addEventListener("click", () => {
-  alert("Button was clicked!");
-});</code></pre>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <h2><span class="num">07</span> Conditionals & Loops</h2>
-            <p>Use <code>if/else</code> for decisions and loops for repetition.</p>
-            <div class="code-block">
-                <div class="code-header">if / else</div>
-                <pre><code>const score = 85;
-
-if (score >= 90) {
-  console.log("Grade: A");
-} else {
-  console.log("Grade: B");
-}</code></pre>
-            </div>
-            <div class="code-block">
-                <div class="code-header">for loop</div>
-                <pre><code>const courses = ["HTML", "CSS", "JavaScript"];
-for (let i = 0; i < courses.length; i++) {
-  console.log(courses[i]);
-}</code></pre>
-            </div>
-        </div>
-
-        <div class="recap-box">
-            <h3>📝 Quick Recap</h3>
-            <ul>
-                <li>JavaScript runs <strong>in the browser</strong> and makes pages interactive</li>
-                <li>Use <code>let</code> and <code>const</code> to store data</li>
-                <li><strong>Functions</strong> are reusable blocks of code</li>
-                <li>The <strong>DOM</strong> lets you access and modify HTML</li>
-                <li><strong>Event listeners</strong> help you respond to user actions</li>
-                <li><code>if/else</code> and loops help your code make decisions and repeat tasks</li>
-            </ul>
-        </div>
-
-        <div class="page-nav">
-            <a href="css.html" class="btn-nav prev">← Back: CSS</a>
-            <a href="practice.html" class="btn-nav next">Next: Playground →</a>
-        </div>
+        <div class="note-card">...</div>
     </main>
 
     <footer>
@@ -157,18 +49,5 @@ for (let i = 0; i < courses.length; i++) {
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        const demoBtn = document.getElementById('demo-btn');
-        const demoOutput = document.getElementById('demo-output');
-        let clickCount = 0;
-        
-        if (demoBtn) {
-            demoBtn.addEventListener('click', () => {
-                clickCount++;
-                demoOutput.textContent = `You clicked ${clickCount} time${clickCount !== 1 ? 's' : ''}! 🎉`;
-                demoOutput.style.color = 'var(--accent)';
-            });
-        }
-    </script>
 </body>
 </html>

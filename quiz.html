@@ -30,6 +30,7 @@
             <li><a href="regist.html">🔐 Register</a></li>
         </ul>
         <button class="hamburger">☰</button>
+        <span id="auth-status" class="auth-status">Guest mode</span>
         <button id="theme-toggle">🌙</button>
     </nav>
 
@@ -40,51 +41,9 @@
     </div>
 
     <main class="quiz-container">
-        <div id="quiz-intro" class="quiz-card intro-card">
-            <div class="intro-icon">🧠</div>
-            <h2>Ready to test yourself?</h2>
-            <p>This quiz has <strong>15 questions</strong> pulled from all 3 modules. Questions are mixed — no grouping by topic, so stay sharp!</p>
-            <ul class="intro-rules">
-                <li>✅ Pick the best answer for each question</li>
-                <li>✅ You'll see your result at the end</li>
-                <li>✅ You can retake it as many times as you want</li>
-            </ul>
-            <button class="quiz-btn" onclick="startQuiz()">Start Quiz →</button>
-        </div>
-
-        <div id="quiz-area" class="hidden">
-            <div class="progress-wrap">
-                <div class="progress-info">
-                    <span id="q-counter">Question 1 of 15</span>
-                    <span id="q-topic" class="topic-tag">HTML</span>
-                </div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar-fill" id="progress-fill"></div>
-                </div>
-            </div>
-
-            <div class="quiz-card question-card">
-                <p id="question-text" class="question-text"></p>
-                <div id="options-list" class="options-list"></div>
-                <div id="feedback-box" class="feedback-box hidden"></div>
-                <button class="quiz-btn next-btn hidden" id="next-btn" onclick="nextQuestion()">Next →</button>
-            </div>
-        </div>
-
-        <div id="quiz-results" class="quiz-card results-card hidden">
-            <div id="result-icon" class="result-icon"></div>
-            <h2 id="result-title"></h2>
-            <p id="result-subtitle" class="auth-subtitle"></p>
-            <div class="score-display">
-                <span id="score-num" class="score-num"></span>
-                <span class="score-label">out of 15</span>
-            </div>
-            <div id="score-breakdown" class="score-breakdown"></div>
-            <div class="results-actions">
-                <button class="quiz-btn" onclick="retakeQuiz()">Retake Quiz 🔁</button>
-                <a href="index.html" class="quiz-btn quiz-btn-secondary">Back to Home</a>
-            </div>
-        </div>
+        <div id="quiz-intro" class="quiz-card intro-card">...</div>
+        <div id="quiz-area" class="hidden">...</div>
+        <div id="quiz-results" class="quiz-card results-card hidden">...</div>
     </main>
 
     <footer>
@@ -119,7 +78,6 @@
         function startQuiz() {
             currentQ = 0; score = 0; answered = false;
             topicScores = { HTML: { correct: 0, total: 0 }, CSS: { correct: 0, total: 0 }, JS: { correct: 0, total: 0 } };
-
             document.getElementById('quiz-intro').classList.add('hidden');
             document.getElementById('quiz-area').classList.remove('hidden');
             renderQuestion();
@@ -128,7 +86,6 @@
         function renderQuestion() {
             const q = questions[currentQ];
             answered = false;
-
             document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
             document.getElementById('q-topic').textContent = q.topic;
             document.getElementById('q-topic').className = `topic-tag topic-${q.topic.toLowerCase()}`;
@@ -153,11 +110,9 @@
         function selectAnswer(index) {
             if (answered) return;
             answered = true;
-
             const q = questions[currentQ];
             const optBtns = document.querySelectorAll('.option-btn');
             const feedbackBox = document.getElementById('feedback-box');
-
             topicScores[q.topic].total++;
 
             optBtns.forEach((btn, i) => {

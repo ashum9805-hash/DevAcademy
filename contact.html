@@ -11,7 +11,6 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
@@ -31,10 +30,10 @@
             <li><a href="regist.html">🔐 Register</a></li>
         </ul>
         <button class="hamburger">☰</button>
+        <span id="auth-status" class="auth-status">Guest mode</span>
         <button id="theme-toggle">🌙</button>
     </nav>
 
-    <!-- PAGE HEADER -->
     <div class="page-header contact-header">
         <span class="lang-badge">Get in Touch</span>
         <h1>Contact Us</h1>
@@ -43,74 +42,11 @@
 
     <main class="contact-wrapper">
         <div class="contact-info">
-            <div class="info-card">
-                <div class="info-icon">📬</div>
-                <h3>General Enquiries</h3>
-                <p>For questions about the course content or how to get started.</p>
-                <span class="info-detail">hello@devacademy.io</span>
-            </div>
-
-            <div class="info-card">
-                <div class="info-icon">🐛</div>
-                <h3>Report an Issue</h3>
-                <p>Found a bug or something that doesn't look right? Let us know.</p>
-                <span class="info-detail">bugs@devacademy.io</span>
-            </div>
-
-            <div class="info-card">
-                <div class="info-icon">💡</div>
-                <h3>Suggestions</h3>
-                <p>Want us to cover a new topic? We're always looking to improve.</p>
-                <span class="info-detail">ideas@devacademy.io</span>
-            </div>
+            <div class="info-card">...</div>
         </div>
-
         <div class="contact-form-wrap">
-            <div id="contact-form-box" class="auth-card contact-card">
-                <h2>Send a Message</h2>
-                <p class="auth-subtitle">Fill in the form below and we'll get back to you as soon as possible.</p>
-
-                <div class="form-group">
-                    <label for="contact-name">Your Name</label>
-                    <input type="text" id="contact-name" placeholder="e.g. Alex Johnson">
-                    <span class="field-error" id="name-error"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-email">Email Address</label>
-                    <input type="email" id="contact-email" placeholder="you@example.com">
-                    <span class="field-error" id="email-error"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-subject">Subject</label>
-                    <select id="contact-subject">
-                        <option value="">— Select a topic —</option>
-                        <option value="general">General Enquiry</option>
-                        <option value="bug">Report a Bug</option>
-                        <option value="suggestion">Course Suggestion</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <span class="field-error" id="subject-error"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-message">Message</label>
-                    <textarea id="contact-message" rows="5" placeholder="Write your message here..."></textarea>
-                    <span class="field-error" id="message-error"></span>
-                </div>
-
-                <button type="button" onclick="sendMessage()">Send Message ✉️</button>
-            </div>
-
-            <div id="contact-success" class="auth-card contact-card hidden" style="text-align:center;">
-                <div class="auth-icon">✅</div>
-                <h2>Message Sent!</h2>
-                <p class="success-msg">Your message was received successfully.</p>
-                <p class="auth-subtitle" id="success-detail"></p>
-                <button type="button" onclick="resetContactForm()">Send Another Message</button>
-                <a href="index.html" class="btn-secondary-link">Back to Home →</a>
-            </div>
+            <div id="contact-form-box" class="auth-card contact-card">...</div>
+            <div id="contact-success" class="auth-card contact-card hidden" style="text-align:center;">...</div>
         </div>
     </main>
 
@@ -121,10 +57,11 @@
     <script src="script.js"></script>
     <script>
         function sendMessage() {
-            const name    = document.getElementById('contact-name').value.trim();
-            const email   = document.getElementById('contact-email').value.trim();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
             const subject = document.getElementById('contact-subject').value;
             const message = document.getElementById('contact-message').value.trim();
+
             const nameError = document.getElementById('name-error');
             const emailError = document.getElementById('email-error');
             const subjectError = document.getElementById('subject-error');
@@ -136,45 +73,20 @@
             messageError.textContent = '';
 
             let hasError = false;
+            if (name === '') { nameError.textContent = 'Please enter your name.'; hasError = true; }
+            else if (name.length < 2) { nameError.textContent = 'Name must be at least 2 characters.'; hasError = true; }
 
-            if (name === '') {
-                nameError.textContent = 'Please enter your name.';
-                hasError = true;
-            } else if (name.length < 2) {
-                nameError.textContent = 'Name must be at least 2 characters.';
-                hasError = true;
-            }
+            if (email === '') { emailError.textContent = 'Please enter your email address.'; hasError = true; }
+            else if (!email.includes('@') || !email.includes('.')) { emailError.textContent = 'Please enter a valid email address.'; hasError = true; }
 
-            if (email === '') {
-                emailError.textContent = 'Please enter your email address.';
-                hasError = true;
-            } else if (!email.includes('@') || !email.includes('.')) {
-                emailError.textContent = 'Please enter a valid email address.';
-                hasError = true;
-            }
+            if (subject === '') { subjectError.textContent = 'Please select a topic.'; hasError = true; }
 
-            if (subject === '') {
-                subjectError.textContent = 'Please select a topic.';
-                hasError = true;
-            }
-
-            if (message === '') {
-                messageError.textContent = 'Message cannot be empty.';
-                hasError = true;
-            } else if (message.length < 10) {
-                messageError.textContent = 'Message is too short — at least 10 characters.';
-                hasError = true;
-            }
+            if (message === '') { messageError.textContent = 'Message cannot be empty.'; hasError = true; }
+            else if (message.length < 10) { messageError.textContent = 'Message is too short — at least 10 characters.'; hasError = true; }
 
             if (hasError) return;
 
-            const topicLabels = {
-                general: 'General Enquiry',
-                bug: 'Bug Report',
-                suggestion: 'Course Suggestion',
-                other: 'Other'
-            };
-
+            const topicLabels = { general: 'General Enquiry', bug: 'Bug Report', suggestion: 'Course Suggestion', other: 'Other' };
             document.getElementById('success-detail').textContent = `Thanks, ${name}! We'll reply to ${email} regarding your "${topicLabels[subject]}" shortly.`;
             document.getElementById('contact-form-box').classList.add('hidden');
             document.getElementById('contact-success').classList.remove('hidden');
@@ -185,7 +97,6 @@
             document.getElementById('contact-email').value = '';
             document.getElementById('contact-subject').value = '';
             document.getElementById('contact-message').value = '';
-
             document.getElementById('contact-success').classList.add('hidden');
             document.getElementById('contact-form-box').classList.remove('hidden');
         }

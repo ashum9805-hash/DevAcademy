@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
@@ -29,11 +28,10 @@
             <li><a href="regist.html">🔐 Register</a></li>
         </ul>
         <button class="hamburger">☰</button>
-        <a href="#" onclick="logOutUser()">Log Out / Reset Demo</a>
+        <span id="auth-status" class="auth-status">Guest mode</span>
         <button id="theme-toggle">🌙</button>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-text">
             <span class="badge">Free Course • 3 Modules</span>
@@ -50,36 +48,30 @@
         </div>
     </section>
 
-    <!-- COURSES SECTION -->
     <section class="courses">
         <h2>What You'll Learn</h2>
         <div class="card-container">
-
             <div class="card">
                 <div class="card-icon">🏗️</div>
                 <h3>HTML</h3>
                 <p>The skeleton of every webpage. Learn tags, structure, and how to organize content properly.</p>
                 <a href="html.html" class="card-link">Go to notes →</a>
             </div>
-
             <div class="card">
                 <div class="card-icon">🎨</div>
                 <h3>CSS</h3>
                 <p>Make things look good. Learn colors, fonts, layouts, and how to make pages responsive.</p>
                 <a href="css.html" class="card-link">Go to notes →</a>
             </div>
-
             <div class="card">
                 <div class="card-icon">⚡</div>
                 <h3>JavaScript</h3>
                 <p>Bring your pages to life. Learn how to add interactivity, handle clicks, and manipulate the DOM.</p>
                 <a href="js.html" class="card-link">Go to notes →</a>
             </div>
-
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <p>© 2026 DevAcademy — Built for learners, by learners.</p>
     </footer>
