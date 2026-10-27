@@ -1,79 +1,81 @@
 # DevAcademy
 
-DevAcademy is a beginner-friendly web development learning site built with plain HTML, CSS, and JavaScript. It helps learners explore the fundamentals of front-end development through structured notes, interactive examples, and a simple sign-in flow.
+DevAcademy is a beginner-friendly web development learning platform built with plain HTML, CSS, and JavaScript. The project is designed to teach front-end fundamentals through clean lesson pages, interactive examples, and a simple sign-in flow.
+
+It is a lightweight static website, so you can open it directly in a browser without installing dependencies or running a build step.
 
 ## Overview
 
-The project is designed as a lightweight learning portal for students who want to understand:
+DevAcademy helps learners understand the core technologies behind the web:
 
-- HTML structure and semantic elements
-- CSS styling, layouts, and responsiveness
-- JavaScript basics and DOM manipulation
-- Simple user registration and demo navigation flow
+- HTML for structure and content
+- CSS for styling and layout
+- JavaScript for interactivity and behavior
 
-This repository is a static web app with no build tools or package install required.
+The project includes a home page, lesson modules, a registration flow, and examples that make learning approachable for beginners.
 
 ## Features
 
-- Responsive landing page with navigation and theme toggle
-- Beginner-friendly course modules for HTML, CSS, and JavaScript
-- Code examples and lesson notes for each topic
-- Dark/light mode toggle using browser localStorage
-- Registration/sign-in flow with validation logic
-- Mobile-friendly design for learning on different screen sizes
+- Responsive landing page with navigation
+- Course modules for HTML, CSS, and JavaScript
+- Beginner-friendly notes and code examples
+- Light/dark theme toggle using `localStorage`
+- Registration form with validation for username and password fields
+- Redirect-based access control for protected lesson pages
+- Mobile-friendly layout and simple interactive demos
 
 ## Project Structure
 
 ```text
 DevAcademy/
-├── index.html              # Home page and course overview
-├── html.html               # HTML lesson notes
-├── css.html                # CSS lesson notes
-├── js.html                 # JavaScript lesson notes
-├── regist.html             # Login / registration page
-├── script.js               # Shared site logic (theme toggles, auth flow)
-├── auth-check.js           # Redirect protection for protected pages
-├── style.css               # Main styling
-├── notes.css               # Shared lesson page styling
-├── regist.css              # Registration page styles
-├── quiz.html               # Quiz page (project feature)
-├── quiz.css                # Quiz styling
-├── practice.html           # Practice/demo page
-├── about.html              # About page
-├── contact.html            # Contact page
-├── contact.css             # Contact page styling
-├── playground.js           # Playground demo logic
-├── playground.css          # Playground styling
-├── preview.css             # Preview theme styling
-├── notes_js.css            # JavaScript notes styling
-├── notes_2.css             # Extra note styling
-├── README.md               # Project documentation
+├── index.html          # Home page and course overview
+├── html.html           # HTML lesson notes
+├── css.html            # CSS lesson notes
+├── js.html             # JavaScript lesson notes
+├── regist.html         # Sign-in / registration page
+├── script.js           # Shared site behavior and auth logic
+├── auth-check.js       # Redirect logic for protected pages
+├── style.css           # Main global styling
+├── notes.css           # Shared educational page styles
+├── regist.css          # Registration page styles
+├── quiz.html           # Quiz page
+├── quiz.css            # Quiz styles
+├── practice.html       # Practice/demo page
+├── about.html          # About page
+├── contact.html        # Contact page
+├── contact.css         # Contact page styling
+├── playground.js       # Playground interactions
+├── playground.css      # Playground styling
+├── preview.css         # Preview styling
+├── notes_js.css        # JavaScript note styling
+├── notes_2.css         # Additional styling
+├── README.md           # Project documentation
 └── ...
 ```
 
 ## Learning Modules
 
-### 1. HTML
+### HTML
 Covers:
 - page structure
 - tags and attributes
 - semantic elements
-- forms and page organization
+- links, images, lists, and content organization
 
-### 2. CSS
+### CSS
 Covers:
 - selectors and properties
 - colors, fonts, and spacing
-- box model
-- flexbox
+- the box model
+- flexbox layouts
 - hover effects and transitions
 
-### 3. JavaScript
+### JavaScript
 Covers:
 - variables and data types
 - functions
 - DOM manipulation
-- events and listeners
+- event listeners
 - conditionals and loops
 
 ## Getting Started
@@ -82,11 +84,9 @@ Covers:
 
 1. Download or clone the repository.
 2. Open `index.html` in your browser.
-3. Start learning from the home page.
+3. Start exploring the lessons from the home page.
 
 ### Option 2: Run a local server
-
-If you prefer serving the project locally:
 
 ```bash
 git clone https://github.com/ashum9805-hash/DevAcademy.git
@@ -100,27 +100,29 @@ Then open:
 http://localhost:8000
 ```
 
-## Demo Flow
+## Authentication Flow
 
-- Visit the home page
-- Register or sign in via the registration form
-- Access HTML, CSS, and JavaScript lesson pages
-- Explore course content and interactive examples
+The app includes a simple demo registration system:
+
+- users must register before accessing lesson pages
+- successful registration is stored in `sessionStorage`
+- locked pages redirect to `regist.html` if access is not allowed
+- the original page is remembered so users can continue after sign-in
 
 ## Tech Stack
 
 - HTML5
 - CSS3
-- JavaScript (vanilla)
+- JavaScript (Vanilla JS)
 
 ## Notes
 
-This project is intentionally simple and static, making it ideal for beginners learning core web technologies without the complexity of modern frameworks.
+This project is intentionally simple and beginner-focused. It avoids modern frameworks so that learners can focus on understanding the core mechanics of front-end web development.
 
 ## License
 
-This project is provided for learning purposes. If you are using it for a personal or educational project, you may adapt it freely.
+This project is intended for educational and learning purposes.
 
 ## Author
 
-Built as a beginner-focused web learning platform for practical front-end education.
+DevAcademy is a learning-focused front-end project designed to help beginners build confidence with HTML, CSS, and JavaScript.
