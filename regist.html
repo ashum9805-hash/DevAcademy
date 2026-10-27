@@ -15,32 +15,20 @@
         <div class="logo">Dev<span>Academy</span></div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">📚 Notes ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="html.html">🏗️ HTML</a></li>
-                    <li><a href="css.html">🎨 CSS</a></li>
-                    <li><a href="js.html">⚡ JavaScript</a></li>
-                </ul>
-            </li>
-            <li><a href="practice.html">⚡ Playground</a></li>
-            <li><a href="quiz.html">🧠 Quiz</a></li>
-            <li><a href="about.html">👨‍💻 About</a></li>
-            <li><a href="contact.html">💬 Contact</a></li>
-            <li><a href="regist.html" class="active">🔐 Register</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
         </ul>
-        <button class="hamburger">☰</button>
         <button id="theme-toggle">🌙</button>
     </nav>
 
     <!-- AUTH WRAPPER -->
     <div class="auth-wrapper">
 
-        <!-- STEP 1: LOGIN FORM -->
         <div id="login-box" class="auth-card">
             <div class="auth-icon">🔐</div>
             <h2>Sign In to DevAcademy</h2>
-            <p class="auth-subtitle">Create your account to access all course notes.</p>
+            <p class="auth-subtitle">Create your account to save progress on this device.</p>
 
             <div class="form-group">
                 <label for="username">Username</label>
@@ -61,6 +49,11 @@
             </div>
 
             <label class="show-password-toggle">
+                <input type="checkbox" id="remember-me" checked>
+                Keep me signed in on this browser
+            </label>
+
+            <label class="show-password-toggle">
                 <input type="checkbox" id="show-passwords" onchange="togglePasswords(this)">
                 Show passwords
             </label>
@@ -68,15 +61,16 @@
             <div class="error-box hidden" id="general-error"></div>
 
             <button type="button" onclick="simulateLogin()">Sign In / Register</button>
+            <button type="button" class="btn-secondary" onclick="continueAsGuest()">Continue as Guest</button>
         </div>
 
         <div id="homepage-content" class="auth-card hidden">
             <div class="auth-icon">🎉</div>
             <h2 id="welcome-message">Welcome!</h2>
             <p class="success-msg">✓ Successfully registered</p>
-            <p class="auth-subtitle">You now have full access to all DevAcademy course notes. Click below to continue.</p>
+            <p class="auth-subtitle">You can keep browsing and your login will persist on this browser.</p>
             <button type="button" onclick="registerUser()">Continue to Notes →</button>
-            <button type="button" class="btn-secondary" onclick="logOutUser()">Back to Home</button>
+            <button type="button" class="btn-secondary" onclick="logOutUser()">Log Out</button>
         </div>
 
     </div>
