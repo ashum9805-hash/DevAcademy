@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const DEVACADEMY_USER_KEY = 'devacademy-user';
+const NAV_COLLAPSE_WIDTH = 1100;
 
 function initializeTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -47,7 +48,7 @@ function initializeNavigation() {
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.addEventListener('click', event => {
-            if (window.innerWidth > 768) return;
+            if (window.innerWidth > NAV_COLLAPSE_WIDTH) return;
 
             event.preventDefault();
             const menu = toggle.nextElementSibling;
@@ -65,7 +66,7 @@ function initializeNavigation() {
         }
 
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 768 && navLinks) {
+            if (window.innerWidth <= NAV_COLLAPSE_WIDTH && navLinks) {
                 navLinks.classList.remove('active');
                 if (hamburger) {
                     hamburger.textContent = '☰';
