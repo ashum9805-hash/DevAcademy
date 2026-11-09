@@ -1,86 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevAcademy | Learn Web Development</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assets/css/site-helpers.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn HTML, CSS, and JavaScript with beginner-friendly notes, a live playground, and a quick knowledge quiz.">
+<title>DevAcademy | Learn Web Development</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/css/site-helpers.css">
+<link rel="stylesheet" href="landing.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="logo">Dev<span>Academy</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">📚 Notes ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="html.html">🏗️ HTML</a></li>
-                    <li><a href="css.html">🎨 CSS</a></li>
-                    <li><a href="js.html">⚡ JavaScript</a></li>
-                </ul>
-            </li>
-            <li><a href="practice.html">⚡ Playground</a></li>
-            <li><a href="quiz.html">🧠 Quiz</a></li>
-            <li><a href="about.html">👨‍💻 About</a></li>
-            <li><a href="contact.html">💬 Contact</a></li>
-            <li><a href="regist.html">🔐 Register</a></li>
-        </ul>
-        <button class="hamburger">☰</button>
-        <span id="auth-status" class="auth-status">Guest mode</span>
-        <button id="theme-toggle">🌙</button>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-text">
-            <span class="badge">Free Course • 3 Modules</span>
-            <h1>Build Websites<br>From <span class="highlight">Scratch.</span></h1>
-            <p>Learn HTML, CSS, and JavaScript step by step. No experience needed — just curiosity and a browser.</p>
-            <a href="html.html" class="btn">Start Learning →</a>
-        </div>
-        <div class="hero-graphic">
-            <div class="code-box">
-                <p><span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span></p>
-                <p><span class="prop">color</span>: <span class="val">teal</span>;</p>
-                <p><span class="fn">console</span>.log(<span class="val">"Let's go!"</span>);</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="courses">
-        <h2>What You'll Learn</h2>
-        <div class="card-container">
-            <div class="card">
-                <div class="card-icon">🏗️</div>
-                <h3>HTML</h3>
-                <p>The skeleton of every webpage. Learn tags, structure, and how to organize content properly.</p>
-                <a href="html.html" class="card-link">Go to notes →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎨</div>
-                <h3>CSS</h3>
-                <p>Make things look good. Learn colors, fonts, layouts, and how to make pages responsive.</p>
-                <a href="css.html" class="card-link">Go to notes →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>JavaScript</h3>
-                <p>Bring your pages to life. Learn how to add interactivity, handle clicks, and manipulate the DOM.</p>
-                <a href="js.html" class="card-link">Go to notes →</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>�� 2026 DevAcademy — Built for learners, by learners.</p>
-    </footer>
-
-    <script src="script.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/nav.js"></script>
-    <script src="assets/js/auth.js"></script>
-    <script src="assets/js/main.js"></script>
+<nav class="navbar">
+<a class="logo" href="index.html" aria-label="DevAcademy home">Dev<span>Academy</span></a>
+<ul class="nav-links">
+<li><a href="index.html" class="active">Home</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle">📚 Notes ▾</a><ul class="dropdown-menu"><li><a href="html.html">🏗️ HTML</a></li><li><a href="css.html">🎨 CSS</a></li><li><a href="js.html">⚡ JavaScript</a></li></ul></li>
+<li><a href="practice.html">⚡ Playground</a></li><li><a href="quiz.html">🧠 Quiz</a></li><li><a href="about.html">👨‍💻 About</a></li><li><a href="contact.html">💬 Contact</a></li><li><a href="regist.html">🔐 Register</a></li>
+</ul>
+<button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><span id="auth-status" class="auth-status">Guest mode</span><button id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+</nav>
+<main>
+<section class="hero landing-hero">
+<div class="hero-text landing-copy"><span class="badge"><span class="status-dot" aria-hidden="true"></span> YOUR FIRST STEPS INTO WEB DEVELOPMENT</span><h1>Turn curiosity into <span class="highlight">websites.</span></h1><p>Learn the building blocks of the web with friendly notes, hands-on practice, and a quiz that helps you find what to review.</p><div class="hero-actions"><a href="html.html" class="btn landing-primary">Start learning <span aria-hidden="true">→</span></a><a href="practice.html" class="landing-secondary">Open the playground <span aria-hidden="true">↗</span></a></div><div class="hero-proof"><span aria-hidden="true">✦</span> No setup. No experience needed. Just a browser.</div></div>
+<div class="hero-graphic landing-visual" aria-label="Code preview showing HTML, CSS, and JavaScript"><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div><div class="code-window"><div class="window-top"><span class="window-dots"><i></i><i></i><i></i></span><span>your-first-page.html</span><span class="window-menu">•••</span></div><div class="code-lines" aria-hidden="true"><p><span class="line-number">01</span><span class="code-muted">&lt;!doctype html&gt;</span></p><p><span class="line-number">02</span><span class="tag">&lt;h1&gt;</span>Hello, web!<span class="tag">&lt;/h1&gt;</span></p><p><span class="line-number">03</span><span class="prop">color</span>: <span class="val">#e05c2a</span>;</p><p><span class="line-number">04</span><span class="fn">button</span>.<span class="prop">addEventListener</span>(<span class="val">'click'</span>, ...);</p><p><span class="line-number">05</span><span class="cursor-block"></span></p></div><div class="window-status"><span><i></i> Ready to build</span><span>HTML · CSS · JS</span></div></div><div class="floating-chip chip-html"><span>🏗️</span> Structure</div><div class="floating-chip chip-css"><span>🎨</span> Style</div><div class="floating-chip chip-js"><span>⚡</span> Interact</div></div>
+<a class="scroll-cue" href="#learning-path"><span aria-hidden="true">↓</span> Explore the learning path</a>
+</section>
+<section class="learning-section" id="learning-path"><div class="section-heading"><span class="section-kicker">THE TOOLKIT</span><h2>Three skills. One creative superpower.</h2><p>Build your foundation one clear step at a time.</p></div><div class="card-container learning-cards">
+<article class="card learning-card html-card"><div class="card-topline"><span class="card-icon">🏗️</span><span class="module-number">01 / STRUCTURE</span></div><h3>HTML</h3><p>Give your ideas structure with headings, links, images, forms, and meaningful page elements.</p><a href="html.html" class="card-link">Explore HTML notes <span aria-hidden="true">↗</span></a></article>
+<article class="card learning-card css-card"><div class="card-topline"><span class="card-icon">🎨</span><span class="module-number">02 / STYLE</span></div><h3>CSS</h3><p>Bring your pages to life with color, typography, spacing, responsive layouts, and motion.</p><a href="css.html" class="card-link">Explore CSS notes <span aria-hidden="true">↗</span></a></article>
+<article class="card learning-card js-card"><div class="card-topline"><span class="card-icon">⚡</span><span class="module-number">03 / INTERACTION</span></div><h3>JavaScript</h3><p>Make pages respond to people with events, functions, decisions, and DOM updates.</p><a href="js.html" class="card-link">Explore JavaScript notes <span aria-hidden="true">↗</span></a></article>
+</div></section>
+<section class="try-section" aria-labelledby="try-title"><div class="try-copy"><span class="section-kicker">LEARN BY DOING</span><h2 id="try-title">Read a little.<br><span class="highlight">Try a lot.</span></h2><p>Learning sticks when you experiment. Put your code in the playground, see what happens, then check your understanding with the quiz.</p><div class="hero-actions"><a href="practice.html" class="btn landing-primary">Try the playground →</a><a href="quiz.html" class="landing-secondary">Take the quiz <span aria-hidden="true">↗</span></a></div></div><div class="learning-steps" aria-label="A simple learning loop"><div class="step-card"><span class="step-icon">📖</span><span><strong>01. Learn</strong><small>Explore bite-sized notes</small></span><span class="step-arrow">→</span></div><div class="step-card"><span class="step-icon">🧪</span><span><strong>02. Experiment</strong><small>Write code and preview it</small></span><span class="step-arrow">→</span></div><div class="step-card"><span class="step-icon">🧠</span><span><strong>03. Check yourself</strong><small>Quiz, review, and repeat</small></span><span class="step-arrow">✓</span></div></div></section>
+<section class="landing-cta"><div><span class="section-kicker">YOUR NEXT PROJECT STARTS HERE</span><h2>Ready to make something?</h2><p>Start with one lesson and build from there.</p></div><a href="html.html" class="btn landing-primary">Let’s get started <span aria-hidden="true">→</span></a></section>
+</main>
+<footer><p>© 2026 DevAcademy — Built for learners, by learners.</p><p class="footer-note">Made with curiosity <span aria-hidden="true">✦</span></p></footer>
+<script src="script.js"></script>
 </body>
 </html>
