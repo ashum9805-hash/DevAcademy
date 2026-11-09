@@ -37,11 +37,159 @@
     <div class="page-header js-header">
         <span class="lang-badge">Module 3</span>
         <h1>JavaScript Basics</h1>
-        <p>JavaScript makes your pages interactive. It's the only language that runs directly in the browser — and it's what brings HTML and CSS to life.</p>
+        <p>JavaScript adds real behavior to web pages. It lets you react to clicks, change content, validate forms, and make pages feel alive.</p>
     </div>
 
     <main class="notes-container">
-        <div class="note-card">...</div>
+        <section class="note-card">
+            <h2><span class="num">01</span> What is JavaScript?</h2>
+            <p><strong>JavaScript</strong> is a programming language used to make web pages interactive. While HTML structures content and CSS styles it, JavaScript gives the page logic and behavior.</p>
+            <p>It can do things like update text, respond to button clicks, validate form input, animate elements, and communicate with servers. JavaScript runs in the browser and is one of the core tools of modern web development.</p>
+            <div class="tip-box">If HTML is the skeleton and CSS is the paint, JavaScript is the engine that makes the page respond.</div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">02</span> JavaScript syntax</h2>
+            <p>JavaScript uses statements, variables, operators, and functions. A script is usually stored in a file like <code>script.js</code> or written directly inside a page using <code>&lt;script&gt;</code>.</p>
+            <div class="code-block">
+                <div class="code-header">A simple script</div>
+                <pre><code>const greeting = 'Hello, DevAcademy!';
+console.log(greeting);</code></pre>
+            </div>
+            <p>Variables hold values. <code>const</code> is used for values that should not be reassigned, while <code>let</code> is used for values that may change.</p>
+            <div class="code-block">
+                <div class="code-header">Variable examples</div>
+                <pre><code>const username = 'Sam';
+let score = 0;
+score = 1;</code></pre>
+            </div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">03</span> Data types</h2>
+            <p>JavaScript has several basic data types:</p>
+            <ul>
+                <li><code>string</code> — text such as <code>'hello'</code></li>
+                <li><code>number</code> — numeric values like <code>42</code> or <code>3.14</code></li>
+                <li><code>boolean</code> — <code>true</code> or <code>false</code></li>
+                <li><code>null</code> — explicitly empty value</li>
+                <li><code>undefined</code> — value has not been assigned</li>
+            </ul>
+            <div class="code-block">
+                <div class="code-header">Examples</div>
+                <pre><code>const userName = 'Ava';
+const age = 16;
+const isLoggedIn = true;</code></pre>
+            </div>
+            <p>Knowing the basic types helps when working with conditions, loops, and user input.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">04</span> Operators and conditions</h2>
+            <p>JavaScript uses operators to compare and calculate values. Common operators include <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and comparison operators like <code>===</code>, <code>&gt;</code>, and <code>&lt;</code>.</p>
+            <div class="code-block">
+                <div class="code-header">If/else example</div>
+                <pre><code>const score = 80;
+
+if (score >= 70) {
+  console.log('Pass');
+} else {
+  console.log('Try again');
+}</code></pre>
+            </div>
+            <p>Conditionals let the script choose different actions depending on a condition. They are essential for logic such as checking a form before submitting it or showing a hidden element after a click.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">05</span> Functions</h2>
+            <p>A <strong>function</strong> is a reusable block of code. Functions help avoid repetition and make scripts easier to organize.</p>
+            <div class="code-block">
+                <div class="code-header">Function example</div>
+                <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('Kaleab'));</code></pre>
+            </div>
+            <p>Functions can accept parameters, perform work, and return a result. They are used for tasks like validating data, generating outputs, and responding to user actions.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">06</span> DOM manipulation</h2>
+            <p>The <strong>Document Object Model (DOM)</strong> is the browser's structured representation of the page. JavaScript can access and change elements in the DOM to update text, hide content, and add interactivity.</p>
+            <div class="code-block">
+                <div class="code-header">Changing content in the DOM</div>
+                <pre><code>const heading = document.querySelector('h1');
+heading.textContent = 'Welcome to DevAcademy!';</code></pre>
+            </div>
+            <p>Common DOM methods include:</p>
+            <ul>
+                <li><code>document.querySelector()</code> selects the first matching element</li>
+                <li><code>document.querySelectorAll()</code> selects all matching elements</li>
+                <li><code>element.textContent</code> gets or updates text</li>
+                <li><code>element.classList.add()</code> adds a CSS class</li>
+            </ul>
+            <p>This is the foundation of interactive sites: click a button, update the DOM, and show new content or styling.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">07</span> Event listeners</h2>
+            <p>Users interact with a page by clicking buttons, typing into forms, scrolling, and more. JavaScript listens for those events and responds to them.</p>
+            <div class="code-block">
+                <div class="code-header">Button click example</div>
+                <pre><code>const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+  alert('Button clicked!');
+});</code></pre>
+            </div>
+            <p>The <code>addEventListener()</code> method is one of the most important JavaScript features. It allows your code to react to actions like clicks, key presses, and form submissions.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">08</span> Arrays and loops</h2>
+            <p>An <strong>array</strong> stores a list of values. A <strong>loop</strong> repeats code as many times as needed.</p>
+            <div class="code-block">
+                <div class="code-header">Array and for loop</div>
+                <pre><code>const fruits = ['apple', 'banana', 'orange'];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}</code></pre>
+            </div>
+            <p>Arrays are useful for lists like product names, scores, or quiz questions. Loops are used to iterate through data and perform the same action on each item.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">09</span> Form validation</h2>
+            <p>JavaScript can prevent invalid form data before it is sent. This is especially useful for checking required fields, minimum password length, or email format.</p>
+            <div class="code-block">
+                <div class="code-header">Simple validation</div>
+                <pre><code>const password = 'abc';
+
+if (password.length < 6) {
+  console.log('Password must be at least 6 characters.');
+}</code></pre>
+            </div>
+            <p>Client-side validation improves the user experience, but it should not replace server-side validation for security and data integrity.</p>
+        </section>
+
+        <section class="recap-box">
+            <h3>JavaScript checklist</h3>
+            <ul>
+                <li>Use variables to store values.</li>
+                <li>Write conditions to make choices in your code.</li>
+                <li>Use functions to organize and reuse logic.</li>
+                <li>Update the DOM to show new content and states.</li>
+                <li>Listen for user events like clicks and form submission.</li>
+                <li>Use arrays and loops to process collections of data.</li>
+            </ul>
+        </section>
+
+        <nav class="page-nav" aria-label="Module navigation">
+            <a class="btn-nav" href="css.html">← CSS Basics</a>
+            <a class="btn-nav next" href="index.html">Home →</a>
+        </nav>
     </main>
 
     <footer>

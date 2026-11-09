@@ -37,11 +37,164 @@
     <div class="page-header html-header">
         <span class="lang-badge">Module 1</span>
         <h1>HTML Basics</h1>
-        <p>HTML is the skeleton of every webpage. It tells the browser what content to show — headings, paragraphs, images, links, and more.</p>
+        <p>HTML gives web pages their structure and meaning. Learn the elements that organize text, images, links, and forms.</p>
     </div>
 
     <main class="notes-container">
-        <div class="note-card">...</div>
+        <section class="note-card">
+            <h2><span class="num">01</span> What is HTML?</h2>
+            <p><strong>HTML</strong> (HyperText Markup Language) is the standard markup language used to describe the structure and meaning of content on a web page. It uses elements—written with tags—to tell a browser what each piece of content represents.</p>
+            <p>HTML is not a programming language: it describes content rather than providing logic or calculations. CSS controls presentation, while JavaScript can add behavior.</p>
+            <div class="tip-box"><strong>Think of a web page as a house:</strong> HTML is the structure and rooms, CSS is the paint and decoration, and JavaScript is the switches and moving parts.</div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">02</span> The basic document structure</h2>
+            <p>A complete HTML document starts with a doctype declaration, then the root <code>&lt;html&gt;</code> element. The <code>&lt;head&gt;</code> contains page information and linked resources; the <code>&lt;body&gt;</code> contains the content visitors see.</p>
+            <div class="code-block">
+                <div class="code-header">A minimal HTML page</div>
+                <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;My first page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, web!&lt;/h1&gt;
+    &lt;p&gt;This is my first page.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            <ul>
+                <li><code>&lt;!doctype html&gt;</code> tells the browser to use modern HTML standards mode.</li>
+                <li><code>lang="en"</code> identifies the document language for browsers and assistive technology.</li>
+                <li><code>&lt;meta charset="utf-8"&gt;</code> enables a broad range of characters and symbols.</li>
+                <li>The viewport setting helps the page scale to the device width on phones and tablets.</li>
+                <li><code>&lt;title&gt;</code> supplies the browser-tab title and a useful page name in search results.</li>
+            </ul>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">03</span> Elements, tags, and attributes</h2>
+            <p>An HTML <strong>element</strong> usually consists of an opening tag, content, and a closing tag. Tags are written inside angle brackets. Some elements, such as <code>&lt;img&gt;</code> and <code>&lt;meta&gt;</code>, are void elements and do not wrap content.</p>
+            <div class="code-block">
+                <div class="code-header">An element with an attribute</div>
+                <pre><code>&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+            </div>
+            <p>Here, <code>&lt;a&gt;</code> is the tag, the full link is the element, and <code>href</code> is an attribute that provides extra information. Attributes are written in the opening tag, usually as <code>name="value"</code>.</p>
+            <div class="tip-box">Always quote attribute values and use lowercase tag and attribute names for readable, consistent HTML.</div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">04</span> Headings and text</h2>
+            <p>Use headings to organize the page into a meaningful outline. <code>&lt;h1&gt;</code> is the main heading, followed by nested section headings from <code>&lt;h2&gt;</code> through <code>&lt;h6&gt;</code>. Choose a heading level because of its place in the outline, not just its default size.</p>
+            <div class="code-block">
+                <div class="code-header">A simple content outline</div>
+                <pre><code>&lt;h1&gt;A Guide to Gardens&lt;/h1&gt;
+&lt;p&gt;An introduction to growing plants at home.&lt;/p&gt;
+
+&lt;h2&gt;Getting started&lt;/h2&gt;
+&lt;p&gt;Choose a sunny place and healthy soil.&lt;/p&gt;
+
+&lt;h3&gt;Choosing a pot&lt;/h3&gt;
+&lt;p&gt;Make sure it has drainage holes.&lt;/p&gt;</code></pre>
+            </div>
+            <p>Use <code>&lt;p&gt;</code> for paragraphs, <code>&lt;strong&gt;</code> for important content, and <code>&lt;em&gt;</code> for emphasis. These elements communicate meaning, unlike using visual styling alone.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">05</span> Links, images, and lists</h2>
+            <p>Links connect pages and resources. The link text should make sense on its own and describe where it leads.</p>
+            <div class="code-block">
+                <div class="code-header">Links and images</div>
+                <pre><code>&lt;a href="about.html"&gt;Read about our team&lt;/a&gt;
+
+&lt;img src="garden.jpg" alt="Red flowers growing in a garden"&gt;</code></pre>
+            </div>
+            <p>The <code>alt</code> text provides an accessible text alternative for an informative image. If an image is purely decorative and adds no information, use an empty alternative: <code>alt=""</code>.</p>
+            <p>Use <code>&lt;ul&gt;</code> for an unordered list, <code>&lt;ol&gt;</code> when order matters, and <code>&lt;li&gt;</code> for each item.</p>
+            <div class="code-block">
+                <div class="code-header">A list of steps</div>
+                <pre><code>&lt;ol&gt;
+  &lt;li&gt;Pick a topic.&lt;/li&gt;
+  &lt;li&gt;Write a first draft.&lt;/li&gt;
+  &lt;li&gt;Review and improve it.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">06</span> Semantic page structure</h2>
+            <p>Semantic elements describe the purpose of their content. They make page structure easier to understand for people, browsers, and assistive technologies.</p>
+            <div class="code-block">
+                <div class="code-header">A semantic layout</div>
+                <pre><code>&lt;header&gt;
+  &lt;h1&gt;Local Nature Club&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav aria-label="Main navigation"&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt;
+  &lt;a href="events.html"&gt;Events&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Our next event&lt;/h2&gt;
+    &lt;p&gt;Join us for a community planting day.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;Contact the club for details.&lt;/footer&gt;</code></pre>
+            </div>
+            <p>Common landmarks include <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code>. Use <code>&lt;div&gt;</code> when no more meaningful element fits, rather than using it for every container.</p>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">07</span> Tables for tabular data</h2>
+            <p>Tables are for information that naturally belongs in rows and columns, such as schedules or comparison data—not for laying out the whole page. Use header cells to identify each column or row.</p>
+            <div class="code-block">
+                <div class="code-header">A small data table</div>
+                <pre><code>&lt;table&gt;
+  &lt;caption&gt;Club meeting schedule&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope="col"&gt;Day&lt;/th&gt;&lt;th scope="col"&gt;Activity&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Tuesday&lt;/td&gt;&lt;td&gt;Planting&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Friday&lt;/td&gt;&lt;td&gt;Garden care&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="note-card">
+            <h2><span class="num">08</span> Forms and labels</h2>
+            <p>Forms collect information from visitors. Connect every input to a visible <code>&lt;label&gt;</code> so its purpose is clear and it can be activated by clicking the label.</p>
+            <div class="code-block">
+                <div class="code-header">A basic form</div>
+                <pre><code>&lt;form action="/subscribe" method="post"&gt;
+  &lt;label for="email-address"&gt;Email address&lt;/label&gt;
+  &lt;input id="email-address" name="email" type="email" required&gt;
+  &lt;button type="submit"&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+            <p>The <code>for</code> value on the label must match the input's <code>id</code>. The <code>name</code> is the field name submitted with the form. Choose an appropriate input type, such as <code>email</code>, and use built-in attributes like <code>required</code> when they fit.</p>
+        </section>
+
+        <section class="recap-box">
+            <h3>HTML checklist</h3>
+            <ul>
+                <li>Start with a valid document structure and set the page language.</li>
+                <li>Use headings in a logical order to outline the content.</li>
+                <li>Choose semantic elements that describe the role of the content.</li>
+                <li>Write descriptive link text and useful image alternatives.</li>
+                <li>Associate form fields with labels, and use tables only for tabular data.</li>
+                <li>Keep structure in HTML; use CSS for visual design and JavaScript for behavior.</li>
+            </ul>
+        </section>
+
+        <nav class="page-nav" aria-label="Module navigation">
+            <a class="btn-nav" href="index.html">← Home</a>
+            <a class="btn-nav next" href="css.html">Next: CSS Basics →</a>
+        </nav>
     </main>
 
     <footer>
