@@ -1,83 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    initializeNavigation();
+    initializeAuthStatus();
+    initializeRegistrationView();
+});
+
+const DEVACADEMY_USER_KEY = 'devacademy-user';
+
+function initializeTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
     const toggleBtn = document.getElementById('theme-toggle');
-    if (toggleBtn) {
-        toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    if (!toggleBtn) return;
 
-        toggleBtn.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
+    updateThemeButton(toggleBtn, savedTheme);
+    toggleBtn.addEventListener('click', () => {
+        const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark'
+            ? 'light'
+            : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+        updateThemeButton(toggleBtn, nextTheme);
+    });
+}
 
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-        });
-    }
+function updateThemeButton(button, theme) {
+    button.textContent = theme === 'dark' ? '☀️' : '🌙';
+    button.setAttribute('aria-label', 'Toggle theme');
+}
 
+function initializeNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger && navLinks) {
+        hamburger.setAttribute('aria-expanded', 'false');
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.textContent = isOpen ? '✕' : '☰';
+            hamburger.setAttribute('aria-expanded', String(isOpen));
         });
     }
 
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const dropdownMenu = toggle.nextElementSibling;
-                if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
-                    dropdownMenu.classList.toggle('active');
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.addEventListener('click', event => {
+            if (window.innerWidth > 768) return;
+
+            event.preventDefault();
+            const menu = toggle.nextElementSibling;
+            if (!menu || !menu.classList.contains('dropdown-menu')) return;
+
+            const isOpen = menu.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    });
+
+    document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(link => {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768 && navLinks) {
+                navLinks.classList.remove('active');
+                if (hamburger) {
+                    hamburger.textContent = '☰';
+                    hamburger.setAttribute('aria-expanded', 'false');
                 }
             }
         });
     });
-
-    const navLinksItems = document.querySelectorAll('.nav-links a');
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navLinks?.classList.remove('active');
-                if (hamburger) hamburger.textContent = '☰';
-            }
-        });
-    });
-
-    const savedUser = (() => {
-        try {
-            const raw = localStorage.getItem('devacademy-user');
-            return raw ? JSON.parse(raw) : null;
-        } catch (error) {
-            return null;
-        }
-    })();
-
-    const authStatus = document.getElementById('auth-status');
-    if (authStatus) {
-        authStatus.textContent = savedUser && savedUser.loggedIn
-            ? `Signed in as ${savedUser.username}`
-            : 'Guest mode';
-    }
-
-    const loginBox = document.getElementById('login-box');
-    const homepageContent = document.getElementById('homepage-content');
-    const welcomeMessage = document.getElementById('welcome-message');
-    if (loginBox && homepageContent && welcomeMessage) {
-        if (savedUser && savedUser.loggedIn) {
-            welcomeMessage.textContent = `Welcome back, ${savedUser.username}! 👋`;
-            loginBox.classList.add('hidden');
-            homepageContent.classList.remove('hidden');
-        }
-    }
-});
-
-const DEVACADEMY_USER_KEY = 'devacademy-user';
+}
 
 function getStoredUser() {
     try {
@@ -90,7 +86,7 @@ function getStoredUser() {
 
 function isUserLoggedIn() {
     const user = getStoredUser();
-    return !!(user && user.loggedIn);
+    return Boolean(user && user.loggedIn);
 }
 
 function saveUser(username) {
@@ -106,26 +102,47 @@ function clearSavedUser() {
     localStorage.removeItem('isRegistered');
 }
 
+function initializeAuthStatus() {
+    const authStatus = document.getElementById('auth-status');
+    const user = getStoredUser();
+    if (authStatus) {
+        authStatus.textContent = user && user.loggedIn
+            ? `Signed in as ${user.username}`
+            : 'Guest mode';
+    }
+}
+
+function initializeRegistrationView() {
+    const user = getStoredUser();
+    const loginBox = document.getElementById('login-box');
+    const homepageContent = document.getElementById('homepage-content');
+    const welcomeMessage = document.getElementById('welcome-message');
+
+    if (user && user.loggedIn && loginBox && homepageContent && welcomeMessage) {
+        welcomeMessage.textContent = `Welcome back, ${user.username}! 👋`;
+        loginBox.classList.add('hidden');
+        homepageContent.classList.remove('hidden');
+    }
+}
+
 function simulateLogin() {
     const username = document.getElementById('username')?.value.trim();
     const password = document.getElementById('password')?.value;
     const confirm = document.getElementById('confirm-password')?.value;
-
     const usernameError = document.getElementById('username-error');
     const passwordError = document.getElementById('password-error');
     const confirmError = document.getElementById('confirm-error');
     const generalError = document.getElementById('general-error');
 
-    if (usernameError) usernameError.textContent = '';
-    if (passwordError) passwordError.textContent = '';
-    if (confirmError) confirmError.textContent = '';
+    [usernameError, passwordError, confirmError].forEach(error => {
+        if (error) error.textContent = '';
+    });
     if (generalError) {
         generalError.textContent = '';
         generalError.classList.add('hidden');
     }
 
     let hasError = false;
-
     if (!username) {
         if (usernameError) usernameError.textContent = 'Username cannot be blank.';
         hasError = true;
@@ -156,13 +173,12 @@ function simulateLogin() {
     if (hasError) return;
 
     saveUser(username);
-
     const welcomeMessage = document.getElementById('welcome-message');
-    if (welcomeMessage) welcomeMessage.textContent = `Welcome, ${username}! 👋`;
-
     const loginBox = document.getElementById('login-box');
     const homepageContent = document.getElementById('homepage-content');
     const authStatus = document.getElementById('auth-status');
+
+    if (welcomeMessage) welcomeMessage.textContent = `Welcome, ${username}! 👋`;
     if (authStatus) authStatus.textContent = `Signed in as ${username}`;
     if (loginBox) loginBox.classList.add('hidden');
     if (homepageContent) homepageContent.classList.remove('hidden');
@@ -170,11 +186,7 @@ function simulateLogin() {
 
 function registerUser() {
     const savedPage = sessionStorage.getItem('redirectTarget');
-    const user = getStoredUser();
-
-    if (user && user.loggedIn) {
-        localStorage.setItem('isRegistered', 'true');
-    }
+    if (isUserLoggedIn()) localStorage.setItem('isRegistered', 'true');
 
     if (savedPage) {
         sessionStorage.removeItem('redirectTarget');
@@ -187,15 +199,11 @@ function registerUser() {
 function continueAsGuest() {
     clearSavedUser();
     sessionStorage.removeItem('redirectTarget');
-    const authStatus = document.getElementById('auth-status');
-    if (authStatus) authStatus.textContent = 'Guest mode';
     window.location.href = 'index.html';
 }
 
 function logOutUser() {
     clearSavedUser();
     sessionStorage.removeItem('redirectTarget');
-    const authStatus = document.getElementById('auth-status');
-    if (authStatus) authStatus.textContent = 'Guest mode';
     window.location.href = 'index.html';
 }
