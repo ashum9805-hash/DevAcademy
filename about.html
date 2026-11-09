@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevAcademy | About the Creator</title>
+    <title>DevAcademy | About</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="regist.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -28,38 +28,61 @@
             <li><a href="contact.html">💬 Contact</a></li>
             <li><a href="regist.html">🔐 Register</a></li>
         </ul>
-        <button class="hamburger">☰</button>
+        <button class="hamburger" type="button" aria-label="Toggle navigation">☰</button>
         <span id="auth-status" class="auth-status">Guest mode</span>
-        <button id="theme-toggle">🌙</button>
+        <button id="theme-toggle" type="button">🌙</button>
     </nav>
 
-    <div class="page-header" style="background: linear-gradient(135deg, #e05c2a18, #e05c2a05);">
-        <span class="lang-badge">Meet the Maker</span>
-        <h1>About the Creator</h1>
-        <p>The story behind DevAcademy — built by a passionate Grade 12 student.</p>
-    </div>
+    <header class="page-header" style="background: linear-gradient(135deg, #e05c2a18, #e05c2a05);">
+        <span class="lang-badge">About DevAcademy</span>
+        <h1>Learning web development, one step at a time</h1>
+        <p>A beginner-friendly place to explore the building blocks of the web and practice what you learn.</p>
+    </header>
 
     <main style="max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem;">
-        <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 16px; padding: 3rem; margin-bottom: 3rem; text-align: center;">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">👨‍💻</div>
-            <h2 style="font-family: 'Space Mono', monospace; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text);">Kaleab Ashenafi</h2>
-            <p style="color: var(--accent); font-weight: 700; font-size: 1rem; margin-bottom: 1rem;">Grade 12 Student • Web Developer • DevAcademy Founder</p>
-            <p style="color: var(--text2); font-size: 1rem; line-height: 1.8;">
-                DevAcademy started as a Grade 11 group project but evolved into a solo passion project that showcases the fundamentals of web development.
+        <section style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 16px; padding: 3rem; margin-bottom: 2rem;">
+            <h2 style="font-family: 'Space Mono', monospace; font-size: 1.6rem; margin-bottom: 1rem; color: var(--text);">Why DevAcademy exists</h2>
+            <p style="color: var(--text2); line-height: 1.8; margin-bottom: 1rem;">
+                DevAcademy is a small educational website designed to make the first steps into web development feel clear and approachable. It introduces the three core front-end technologies—HTML for page structure, CSS for presentation, and JavaScript for interactivity—in one place.
             </p>
-        </div>
+            <p style="color: var(--text2); line-height: 1.8;">
+                Learners can read short lessons, try code in the browser playground, and check their understanding with a quiz. The goal is to encourage experimentation: start with the basics, make something, and learn by trying.
+            </p>
+        </section>
 
-        <section style="margin-bottom: 3rem;">
-            <div style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem; margin-bottom: 1.5rem;">
-                <h3 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">📖 The Story</h3>
-                <p style="color: var(--text2); margin-bottom: 1rem; line-height: 1.8;">What began as a group project assignment in Grade 11 became a personal mission.</p>
-                <p style="color: var(--text2); line-height: 1.8;">The platform was created to make web development accessible to beginners.</p>
+        <section style="background: var(--bg2); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem; margin-bottom: 2rem;">
+            <h2 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">📚 What you can do here</h2>
+            <ul style="color: var(--text2); line-height: 1.9; padding-left: 1.4rem;">
+                <li>Learn HTML, CSS, and JavaScript through beginner-focused notes.</li>
+                <li>Use the playground to experiment with code and see a live preview.</li>
+                <li>Take a mixed-topic quiz, review your answers, and jump to related notes.</li>
+                <li>Browse at your own pace—no installation or account is required to explore.</li>
+            </ul>
+        </section>
+
+        <section style="background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem; margin-bottom: 2rem;">
+            <h2 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">📖 The story</h2>
+            <p style="color: var(--text2); line-height: 1.8; margin-bottom: 1rem;">
+                DevAcademy began as a Grade 11 group project and grew into a personal project about sharing the fundamentals of web development. It is built with plain HTML, CSS, and JavaScript so learners can explore the same core technologies the site teaches.
+            </p>
+            <p style="color: var(--text2); line-height: 1.8;">
+                The project was created by Kaleab Ashenafi, a Grade 12 student and aspiring web developer. It is an educational learning project, and its lessons are intended as a friendly starting point for further practice.
+            </p>
+        </section>
+
+        <section style="text-align: center; padding: 1rem 0 0;">
+            <h2 style="font-family: 'Space Mono', monospace; font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text);">Keep exploring</h2>
+            <p style="color: var(--text2); line-height: 1.8; margin-bottom: 1.5rem;">Choose a lesson and start building your understanding of the web.</p>
+            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+                <a class="btn" href="html.html">Start with HTML →</a>
+                <a class="btn" href="quiz.html">Try the quiz →</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p>© 2026 DevAcademy — Built with ❤️ by Kaleab Ashenafi</p>
+        <p style="margin-top: 0.5rem;">Questions or looking for FAQs? <a href="contact.html" style="color: var(--accent); font-weight: 700;">Visit our Contact page →</a></p>
     </footer>
 
     <script src="script.js"></script>
