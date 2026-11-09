@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     initializeAuthStatus();
     initializeRegistrationView();
+    initializeLessonAnchors();
 });
 
 const DEVACADEMY_USER_KEY = 'devacademy-user';
@@ -122,6 +123,38 @@ function initializeRegistrationView() {
         welcomeMessage.textContent = `Welcome back, ${user.username}! 👋`;
         loginBox.classList.add('hidden');
         homepageContent.classList.remove('hidden');
+    }
+}
+
+// Give lesson sections stable deep links used by the quiz review.
+function initializeLessonAnchors() {
+    const page = window.location.pathname.split('/').pop();
+    const sectionIds = {
+        'html.html': [
+            'html-overview', 'html-document-structure', 'html-elements-attributes',
+            'html-headings-text', 'html-links-images-lists', 'html-semantic-structure',
+            'html-tables', 'html-forms-labels'
+        ],
+        'css.html': [
+            'css-overview', 'css-syntax', 'css-selectors', 'css-colors-typography',
+            'css-box-model', 'css-flexbox', 'css-responsive-design', 'css-interactive-states'
+        ],
+        'js.html': [
+            'js-overview', 'js-variables-syntax', 'js-data-types', 'js-conditions',
+            'js-functions', 'js-dom', 'js-events', 'js-arrays-loops', 'js-form-validation'
+        ]
+    }[page];
+
+    if (!sectionIds) return;
+
+    document.querySelectorAll('.notes-container .note-card').forEach((section, index) => {
+        if (sectionIds[index]) section.id = sectionIds[index];
+    });
+
+    if (window.location.hash) {
+        requestAnimationFrame(() => {
+            document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView();
+        });
     }
 }
 
