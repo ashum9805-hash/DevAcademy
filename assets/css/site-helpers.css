@@ -19,5 +19,5 @@
 }
 
 .dropdown-menu.active {
-    display: block;
+    display: flex;
 }
