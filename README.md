@@ -1,92 +1,28 @@
 # DevAcademy
 
-DevAcademy is a beginner-friendly web development learning platform built with plain HTML, CSS, and JavaScript. The project is designed to teach front-end fundamentals through clean lesson pages, interactive examples, and a simple sign-in flow.
+DevAcademy is a beginner-friendly website for learning the fundamentals of front-end web development. It is built with plain HTML, CSS, and JavaScript and includes lesson notes, a live code playground, and a knowledge quiz.
 
-It is a lightweight static website, so you can open it directly in a browser without installing dependencies or running a build step.
-
-## Overview
-
-DevAcademy helps learners understand the core technologies behind the web:
-
-- HTML for structure and content
-- CSS for styling and layout
-- JavaScript for interactivity and behavior
-
-The project includes a home page, lesson modules, a registration flow, and examples that make learning approachable for beginners.
+The site is static and has no build step or package dependencies. **You can browse the lessons, playground, and quiz as a guest—sign-up is not required.**
 
 ## Features
 
-- Responsive landing page with navigation
-- Course modules for HTML, CSS, and JavaScript
-- Beginner-friendly notes and code examples
-- Light/dark theme toggle using `localStorage`
-- Registration form with validation for username and password fields
-- Redirect-based access control for protected lesson pages
-- Mobile-friendly layout and simple interactive demos
+- Responsive home page introducing HTML, CSS, and JavaScript.
+- Lesson pages with beginner-focused notes, examples, checklists, and links between modules.
+- A playground where you can edit HTML and run it in a live preview.
+- A 21-question quiz with shuffled questions, previous/skip controls, score breakdowns, answer explanations, and links to related lesson notes.
+- Light and dark themes; the selected theme is saved in browser storage when available.
+- Optional demo sign-in/registration flow that stores a username locally on the current browser. It is not required to access site content and is not a real account or authentication system.
+- Responsive navigation with a Notes dropdown.
 
-## Project Structure
+## Getting started
 
-```text
-DevAcademy/
-├── index.html          # Home page and course overview
-├── html.html           # HTML lesson notes
-├── css.html            # CSS lesson notes
-├── js.html             # JavaScript lesson notes
-├── regist.html         # Sign-in / registration page
-├── script.js           # Shared site behavior and auth logic
-├── auth-check.js       # Redirect logic for protected pages
-├── style.css           # Main global styling
-├── notes.css           # Shared educational page styles
-├── regist.css          # Registration page styles
-├── quiz.html           # Quiz page
-├── quiz.css            # Quiz styles
-├── practice.html       # Practice/demo page
-├── about.html          # About page
-├── contact.html        # Contact page
-├── contact.css         # Contact page styling
-├── playground.js       # Playground interactions
-├── playground.css      # Playground styling
-├── preview.css         # Preview styling
-├── notes_js.css        # JavaScript note styling
-├── notes_2.css         # Additional styling
-├── README.md           # Project documentation
-└── ...
-```
-
-## Learning Modules
-
-### HTML
-Covers:
-- page structure
-- tags and attributes
-- semantic elements
-- links, images, lists, and content organization
-
-### CSS
-Covers:
-- selectors and properties
-- colors, fonts, and spacing
-- the box model
-- flexbox layouts
-- hover effects and transitions
-
-### JavaScript
-Covers:
-- variables and data types
-- functions
-- DOM manipulation
-- event listeners
-- conditionals and loops
-
-## Getting Started
-
-### Option 1: Open directly in the browser
+### Open the site directly
 
 1. Download or clone the repository.
-2. Open `index.html` in your browser.
-3. Start exploring the lessons from the home page.
+2. Open `index.html` in a browser.
+3. Choose a lesson from the **Notes** menu, open the playground, or try the quiz. No account is needed.
 
-### Option 2: Run a local server
+### Run a local server (recommended)
 
 ```bash
 git clone https://github.com/ashum9805-hash/DevAcademy.git
@@ -94,35 +30,54 @@ cd DevAcademy
 python -m http.server 8000
 ```
 
-Then open:
+Then visit <http://localhost:8000>.
+
+## Learning modules
+
+- **HTML** (`html.html`): document structure, elements and attributes, headings, links, images, lists, semantic structure, tables, and forms.
+- **CSS** (`css.html`): CSS syntax and selectors, typography and color, the box model, Flexbox, responsive design, and interactive states.
+- **JavaScript** (`js.html`): variables and data types, conditions, functions, DOM manipulation, events, arrays and loops, and form validation.
+
+The quiz answer review links to the related lesson sections.
+
+## Main files
 
 ```text
-http://localhost:8000
+DevAcademy/
+├── index.html                 # Landing page
+├── html.html                  # HTML lesson notes
+├── css.html                   # CSS lesson notes
+├── js.html                    # JavaScript lesson notes
+├── practice.html              # Code playground
+├── quiz.html                  # Quiz interface
+├── quiz.js                    # Quiz questions and behavior
+├── about.html                 # About page
+├── contact.html               # Contact page and demo form
+├── regist.html                # Optional demo sign-in/registration page
+├── script.js                  # Shared navigation, theme, and demo profile behavior
+├── style.css                  # Shared site styles
+├── landing.css                # Landing-page styles
+├── notes.css                  # Lesson-page styles
+├── quiz.css                   # Quiz styles
+├── quiz-interactions.css      # Quiz navigation and answer-review styles
+├── playground.css             # Playground styles
+├── playground.js              # Playground behavior
+├── regist.css                 # Sign-in/registration styles
+├── contact.css                # Contact-page styles
+└── assets/
+    └── css/site-helpers.css   # Shared navigation and status styles
 ```
 
-## Authentication Flow
+## Sign-in and privacy note
 
-The app includes a simple demo registration system:
+Signing in is optional and does not unlock lessons or other pages. The demo form validates the entered username and password fields in the browser and can remember a demo username in `localStorage`; it does not create an account on a server, verify credentials, or provide secure authentication. Do not enter a real password.
 
-- users must register before accessing lesson pages
-- successful registration is stored in `sessionStorage`
-- locked pages redirect to `regist.html` if access is not allowed
-- the original page is remembered so users can continue after sign-in
-
-## Tech Stack
+## Technology
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla JS)
+- Vanilla JavaScript
 
-## Notes
+## Educational use
 
-This project is intentionally simple and beginner-focused. It avoids modern frameworks so that learners can focus on understanding the core mechanics of front-end web development.
-
-## License
-
-This project is intended for educational and learning purposes.
-
-## Author
-
-DevAcademy is a learning-focused front-end project designed to help beginners build confidence with HTML, CSS, and JavaScript.
+DevAcademy is a class-project learning website intended to help beginners explore web development. Its examples are starting points for practice, not a substitute for further study.
