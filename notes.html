@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Choose a web development lesson and continue learning HTML, CSS, and JavaScript with DevAcademy.">
+    <title>DevAcademy | Learning Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notes-library.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="logo" href="index.html">Dev<span>Academy</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="notes.html" class="active" aria-current="page">📚 Learning Library</a></li>
+            <li><a href="practice.html">⚡ Playground</a></li>
+            <li><a href="quiz.html">🧠 Quiz</a></li>
+            <li><a href="about.html">👨‍💻 About</a></li>
+            <li><a href="contact.html">💬 Contact</a></li>
+            <li><a href="regist.html">🔐 Register</a></li>
+        </ul>
+        <button class="hamburger" type="button" aria-label="Toggle navigation">☰</button>
+        <span id="auth-status" class="auth-status">Guest mode</span>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <header class="library-hero">
+        <div class="library-hero-inner">
+            <span class="library-eyebrow">YOUR FRONT-END LEARNING PATH</span>
+            <h1>Learn at your own pace.</h1>
+            <p>Start with the foundations or jump straight to a topic you want to explore. Your progress is saved in this browser.</p>
+            <div class="continue-card" id="continue-card">
+                <div>
+                    <span class="continue-label">PICK UP WHERE YOU LEFT OFF</span>
+                    <h2 id="continue-title">Choose a lesson to get started</h2>
+                    <p id="continue-description">Your most recently opened lesson will appear here.</p>
+                </div>
+                <a class="library-button" id="continue-link" href="html.html#html-overview">Explore lessons <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="library-main">
+        <section class="progress-overview" aria-labelledby="progress-heading">
+            <div>
+                <span class="library-eyebrow">YOUR LEARNING</span>
+                <h2 id="progress-heading">Progress overview</h2>
+                <p id="progress-summary">No lessons completed yet. Open a lesson and mark it complete when you’re ready.</p>
+            </div>
+            <div class="progress-meter" role="img" aria-label="0 of 25 lessons complete">
+                <span class="progress-count" id="progress-count">0 / 25</span>
+                <div class="progress-track"><span id="progress-fill"></span></div>
+                <span class="progress-caption">lessons completed</span>
+            </div>
+        </section>
+
+        <div class="course-heading">
+            <div>
+                <span class="library-eyebrow">BROWSE BY SUBJECT</span>
+                <h2>Choose what to learn</h2>
+            </div>
+            <p>Each subject is organized into short, focused lessons. Follow the suggested order or choose any topic.</p>
+        </div>
+
+        <section class="course-grid" aria-label="Subjects and lessons">
+            <article class="course-panel course-html" data-course="html">
+                <div class="course-topline"><span class="course-icon" aria-hidden="true">&lt;/&gt;</span><span class="course-step">PATH 01</span></div>
+                <h3>HTML</h3>
+                <p class="course-description">Build meaningful page structure with accessible, semantic markup.</p>
+                <div class="course-progress"><span data-course-count="html">0 / 8 complete</span><span class="mini-track"><i data-course-fill="html"></i></span></div>
+                <ol class="lesson-list">
+                    <li><a href="html.html#html-overview" data-lesson="html-overview"><span class="lesson-number">01</span><span><strong>HTML introduction</strong><small>What HTML is and how a page is structured</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-document-structure" data-lesson="html-document-structure"><span class="lesson-number">02</span><span><strong>Document structure</strong><small>Doctype, head, metadata, and body</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-elements-attributes" data-lesson="html-elements-attributes"><span class="lesson-number">03</span><span><strong>Elements and attributes</strong><small>Tags, nesting, and useful attributes</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-headings-text" data-lesson="html-headings-text"><span class="lesson-number">04</span><span><strong>Headings and text</strong><small>Create a clear content hierarchy</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-links-images-lists" data-lesson="html-links-images-lists"><span class="lesson-number">05</span><span><strong>Links, images, and lists</strong><small>Connect pages and organize content</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-semantic-structure" data-lesson="html-semantic-structure"><span class="lesson-number">06</span><span><strong>Semantic page structure</strong><small>Use landmarks to describe page regions</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-tables" data-lesson="html-tables"><span class="lesson-number">07</span><span><strong>Tables</strong><small>Present genuine row-and-column data</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="html.html#html-forms-labels" data-lesson="html-forms-labels"><span class="lesson-number">08</span><span><strong>Forms and labels</strong><small>Collect information accessibly</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                </ol>
+                <a class="course-footer-link" href="html.html#html-overview">Open HTML course <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="course-panel course-css" data-course="css">
+                <div class="course-topline"><span class="course-icon" aria-hidden="true">✳</span><span class="course-step">PATH 02</span></div>
+                <h3>CSS</h3>
+                <p class="course-description">Style and arrange interfaces, from typography to responsive layouts.</p>
+                <div class="course-progress"><span data-course-count="css">0 / 8 complete</span><span class="mini-track"><i data-course-fill="css"></i></span></div>
+                <ol class="lesson-list">
+                    <li><a href="css.html#css-overview" data-lesson="css-overview"><span class="lesson-number">01</span><span><strong>CSS introduction</strong><small>How CSS styles HTML documents</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-syntax" data-lesson="css-syntax"><span class="lesson-number">02</span><span><strong>CSS syntax</strong><small>Selectors, declarations, and values</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-selectors" data-lesson="css-selectors"><span class="lesson-number">03</span><span><strong>Selectors and specificity</strong><small>Target elements and resolve conflicts</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-colors-typography" data-lesson="css-colors-typography"><span class="lesson-number">04</span><span><strong>Color and typography</strong><small>Style text, color, and readable type</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-box-model" data-lesson="css-box-model"><span class="lesson-number">05</span><span><strong>The box model</strong><small>Understand content, padding, border, margin</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-flexbox" data-lesson="css-flexbox"><span class="lesson-number">06</span><span><strong>Flexbox layout</strong><small>Align and distribute items in one dimension</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-responsive-design" data-lesson="css-responsive-design"><span class="lesson-number">07</span><span><strong>Responsive design</strong><small>Adapt layouts to different screens</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="css.html#css-interactive-states" data-lesson="css-interactive-states"><span class="lesson-number">08</span><span><strong>Interactive states</strong><small>Style hover and keyboard focus</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                </ol>
+                <a class="course-footer-link" href="css.html#css-overview">Open CSS course <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="course-panel course-js" data-course="js">
+                <div class="course-topline"><span class="course-icon" aria-hidden="true">JS</span><span class="course-step">PATH 03</span></div>
+                <h3>JavaScript</h3>
+                <p class="course-description">Add logic and interaction, and make pages respond to people.</p>
+                <div class="course-progress"><span data-course-count="js">0 / 9 complete</span><span class="mini-track"><i data-course-fill="js"></i></span></div>
+                <ol class="lesson-list">
+                    <li><a href="js.html#js-overview" data-lesson="js-overview"><span class="lesson-number">01</span><span><strong>JavaScript introduction</strong><small>Bring behavior and logic to a web page</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-variables-syntax" data-lesson="js-variables-syntax"><span class="lesson-number">02</span><span><strong>Syntax and variables</strong><small>Statements, values, let, and const</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-data-types" data-lesson="js-data-types"><span class="lesson-number">03</span><span><strong>Data types</strong><small>Strings, numbers, booleans, and more</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-conditions" data-lesson="js-conditions"><span class="lesson-number">04</span><span><strong>Operators and conditions</strong><small>Compare values and make decisions</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-functions" data-lesson="js-functions"><span class="lesson-number">05</span><span><strong>Functions</strong><small>Organize and reuse blocks of code</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-dom" data-lesson="js-dom"><span class="lesson-number">06</span><span><strong>DOM manipulation</strong><small>Select and update page elements</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-events" data-lesson="js-events"><span class="lesson-number">07</span><span><strong>Event listeners</strong><small>Respond to clicks, input, and more</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-arrays-loops" data-lesson="js-arrays-loops"><span class="lesson-number">08</span><span><strong>Arrays and loops</strong><small>Store and work through collections</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                    <li><a href="js.html#js-form-validation" data-lesson="js-form-validation"><span class="lesson-number">09</span><span><strong>Form validation</strong><small>Give feedback before data is sent</small></span><span class="lesson-state" aria-hidden="true">○</span></a></li>
+                </ol>
+                <a class="course-footer-link" href="js.html#js-overview">Open JavaScript course <span aria-hidden="true">→</span></a>
+            </article>
+        </section>
+
+        <aside class="progress-note"><span aria-hidden="true">💾</span><p><strong>About saved progress</strong> Progress is stored locally in this browser on this device. The current demo sign-in does not sync progress between devices.</p><a href="regist.html">About registration →</a></aside>
+    </main>
+
+    <footer><p>© 2026 DevAcademy — Built for learners, by learners.</p></footer>
+    <script src="script.js"></script>
+    <script src="notes-progress.js"></script>
+</body>
+</html>

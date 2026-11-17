@@ -1,0 +1,62 @@
+/* Learning library and progress dashboard */
+.library-hero {
+    background: radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--accent) 15%, transparent), transparent 32%), var(--bg2);
+    border-bottom: 1px solid var(--border);
+}
+.library-hero-inner, .library-main { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; }
+.library-hero-inner { padding: 4.5rem 0 3rem; }
+.library-eyebrow { color: var(--accent); font: 700 .72rem 'Space Mono', monospace; letter-spacing: .12em; }
+.library-hero h1 { margin: .55rem 0 .7rem; font: 700 clamp(2.2rem, 5vw, 3.8rem)/1.12 'Space Mono', monospace; }
+.library-hero-inner > p { max-width: 650px; color: var(--text2); font-size: 1.08rem; }
+.continue-card { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 2.4rem; padding: 1.5rem 1.8rem; background: var(--card-bg); border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.06); }
+.continue-label { color: var(--text2); font: 700 .68rem 'Space Mono', monospace; letter-spacing: .08em; }
+.continue-card h2 { margin: .25rem 0; font: 700 1.12rem 'Space Mono', monospace; }
+.continue-card p { color: var(--text2); font-size: .9rem; }
+.library-button { flex: 0 0 auto; display: inline-flex; gap: .8rem; align-items: center; padding: .8rem 1rem; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; }
+.library-button:hover { background: var(--accent2); }
+.library-main { padding: 2.5rem 0 5rem; }
+.progress-overview { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.5rem 1.8rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); }
+.progress-overview h2, .course-heading h2 { margin: .25rem 0; font: 700 1.3rem 'Space Mono', monospace; }
+.progress-overview p, .course-heading > p { color: var(--text2); font-size: .92rem; }
+.progress-meter { width: min(320px, 42%); }
+.progress-count { display: block; margin-bottom: .35rem; font: 700 .85rem 'Space Mono', monospace; text-align: right; }
+.progress-track, .mini-track { display: block; overflow: hidden; height: 8px; border-radius: 99px; background: var(--bg2); }
+.progress-track span, .mini-track i { display: block; width: 0; height: 100%; background: var(--accent); border-radius: inherit; transition: width .25s ease; }
+.progress-caption { display: block; margin-top: .25rem; color: var(--text2); font-size: .75rem; text-align: right; }
+.course-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin: 3.3rem 0 1.4rem; }
+.course-heading > p { max-width: 380px; }
+.course-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+.course-panel { min-width: 0; overflow: hidden; padding: 1.35rem; border: 1px solid var(--border); border-top: 4px solid var(--course-color, var(--accent)); border-radius: 12px; background: var(--card-bg); }
+.course-html { --course-color: #e05c2a; }
+.course-css { --course-color: #2a7ae0; }
+.course-js { --course-color: #c39b00; }
+.course-topline { display: flex; justify-content: space-between; align-items: center; }
+.course-icon { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 10px; background: color-mix(in srgb, var(--course-color) 12%, var(--card-bg)); color: var(--course-color); font: 700 1rem 'Space Mono', monospace; }
+.course-step { color: var(--text2); font: 700 .65rem 'Space Mono', monospace; letter-spacing: .1em; }
+.course-panel h3 { margin-top: .75rem; font: 700 1.45rem 'Space Mono', monospace; }
+.course-description { min-height: 3.2em; color: var(--text2); font-size: .86rem; }
+.course-progress { display: grid; gap: .45rem; margin: 1rem 0 .8rem; color: var(--text2); font-size: .72rem; }
+.mini-track { height: 5px; }
+.course-panel .mini-track i { background: var(--course-color); }
+.lesson-list { list-style: none; border-top: 1px solid var(--border); }
+.lesson-list li { border-bottom: 1px solid var(--border); }
+.lesson-list a { display: grid; grid-template-columns: 28px minmax(0,1fr) 20px; align-items: center; gap: .55rem; padding: .68rem .25rem; color: var(--text); text-decoration: none; border-radius: 6px; }
+.lesson-list a:hover, .lesson-list a:focus-visible { background: var(--bg2); outline-color: var(--course-color); }
+.lesson-number { align-self: start; padding-top: .1rem; color: var(--course-color); font: 700 .68rem 'Space Mono', monospace; }
+.lesson-list strong, .lesson-list small { display: block; }
+.lesson-list strong { font-size: .81rem; line-height: 1.35; }
+.lesson-list small { margin-top: .15rem; color: var(--text2); font-size: .7rem; line-height: 1.4; }
+.lesson-state { color: var(--text2); font-size: 1rem; text-align: center; }
+.lesson-list a.is-complete .lesson-state { color: #248a52; }
+.lesson-list a.is-complete .lesson-state::after { content: '✓'; }
+.lesson-list a.is-complete .lesson-state { font-size: 0; }
+.lesson-list a.is-complete .lesson-state::after { font-size: 1rem; }
+.course-footer-link { display: flex; justify-content: space-between; margin-top: 1rem; color: var(--course-color); font-weight: 700; font-size: .82rem; text-decoration: none; }
+.course-footer-link:hover { text-decoration: underline; }
+.progress-note { display: flex; align-items: center; gap: .8rem; margin-top: 1.5rem; padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg2); color: var(--text2); font-size: .82rem; }
+.progress-note > span { font-size: 1.2rem; }
+.progress-note p { flex: 1; }
+.progress-note strong { color: var(--text); }
+.progress-note a { flex: 0 0 auto; color: var(--accent); font-weight: 700; text-decoration: none; }
+@media (max-width: 980px) { .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .course-panel:last-child { grid-column: 1 / -1; } }
+@media (max-width: 680px) { .library-hero-inner, .library-main { width: min(100% - 2rem, 540px); } .library-hero-inner { padding: 3rem 0 2rem; } .continue-card, .progress-overview, .course-heading { align-items: stretch; flex-direction: column; } .continue-card { gap: 1rem; } .library-button { justify-content: center; } .progress-meter { width: 100%; } .course-heading { gap: .5rem; margin-top: 2.5rem; } .course-grid { grid-template-columns: 1fr; } .course-panel:last-child { grid-column: auto; } .progress-note { align-items: flex-start; flex-wrap: wrap; } .progress-note p { flex-basis: calc(100% - 2.2rem); } .progress-note a { margin-left: 2rem; } }
