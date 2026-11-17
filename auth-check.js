@@ -12,6 +12,19 @@
 
     if (savedUser && savedUser.loggedIn) {
         // Keep the user in their demo-signed-in state.
-        return;
+    }
+
+    // Load the optional interactive lesson additions only on the three course pages.
+    const page = window.location.pathname.split('/').pop();
+    if (['html.html', 'css.html', 'js.html'].includes(page)) {
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = 'course-interactions.css';
+        document.head.append(stylesheet);
+
+        const lessonScript = document.createElement('script');
+        lessonScript.src = 'course-interactions.js';
+        lessonScript.defer = true;
+        document.head.append(lessonScript);
     }
 })();

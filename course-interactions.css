@@ -1,0 +1,37 @@
+/* Supplemental explanations and small hands-on learning demos. */
+.deep-dive, .learning-lab { margin-top: 1.25rem; padding: 1.15rem; border: 1px solid var(--border); border-radius: 10px; }
+.deep-dive { background: var(--bg2); border-left: 4px solid var(--accent); }
+.deep-dive-label, .lab-heading > span, .preview-kicker { color: var(--accent); font: 700 .64rem 'Space Mono', monospace; letter-spacing: .1em; }
+.deep-dive h3, .lab-heading h3 { margin: .35rem 0 .45rem; color: var(--text); font: 700 .98rem 'Space Mono', monospace; }
+.deep-dive p, .lab-heading p { margin: 0 0 .8rem; color: var(--text2); font-size: .86rem; line-height: 1.65; }
+.deep-dive pre { overflow-x: auto; margin: 0; padding: .8rem; border-radius: 7px; background: var(--code-bg); }
+.deep-dive pre code { padding: 0; background: none; color: #a5d6a7; font: .76rem/1.65 'Space Mono', monospace; white-space: pre; }
+.learning-lab { background: var(--card-bg); box-shadow: 0 8px 24px rgba(20, 20, 35, .045); }
+.learning-lab label { display: grid; gap: .35rem; color: var(--text); font-size: .82rem; font-weight: 700; }
+.learning-lab input[type="text"] { width: 100%; padding: .65rem .75rem; border: 1px solid var(--border); border-radius: 7px; background: var(--bg); color: var(--text); font: inherit; }
+.learning-lab input:focus-visible, .learning-lab button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.html-preview { display: grid; gap: .4rem; margin-top: .9rem; padding: 1rem; border: 1px dashed var(--border); border-radius: 8px; background: var(--bg); }
+.html-preview h4 { font: 700 1.15rem 'Space Mono', monospace; }
+.html-preview p { margin: 0; color: var(--text2); font-size: .86rem; }
+.html-preview code { justify-self: start; margin-top: .35rem; }
+.box-lab-stage { display: grid; place-items: center; min-height: 210px; padding: 1rem; border-radius: 8px; background: var(--bg2); }
+.box-lab-margin { width: min(100%, 390px); padding: 18px; border: 2px dashed #e05c2a; border-radius: 10px; background: color-mix(in srgb, #e05c2a 12%, var(--card-bg)); }
+.box-lab-border { padding: 0; border: 6px solid #2a7ae0; border-radius: 8px; background: color-mix(in srgb, #2a7ae0 15%, var(--card-bg)); transition: border-width .15s; }
+.box-lab-padding { padding: 24px; background: color-mix(in srgb, #2ae078 18%, var(--card-bg)); transition: padding .15s; }
+.box-lab-content { padding: .8rem; border-radius: 5px; background: var(--accent); color: white; font: 700 .8rem 'Space Mono', monospace; text-align: center; }
+.lab-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.lab-controls label { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+.lab-controls output { color: var(--accent); font: 700 .75rem 'Space Mono', monospace; }
+.lab-controls input { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); }
+.flex-preview { display: flex; justify-content: center; gap: .5rem; min-height: 95px; padding: .75rem; border: 1px dashed var(--border); border-radius: 8px; background: var(--bg2); transition: justify-content .2s; }
+.flex-preview span { display: grid; width: 62px; min-height: 56px; place-items: center; border-radius: 6px; background: var(--accent); color: white; font: 700 .72rem 'Space Mono', monospace; }
+.lab-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .85rem; }
+.lab-actions button { padding: .55rem .8rem; border: 1px solid var(--accent); border-radius: 7px; background: var(--accent); color: white; font: 700 .78rem 'DM Sans', sans-serif; cursor: pointer; }
+.lab-actions button:hover, .lab-actions button[aria-pressed="true"] { filter: brightness(.9); }
+.lab-actions button.lab-secondary { background: transparent; color: var(--accent); }
+.lab-feedback, .event-trace { margin: .65rem 0 0; color: var(--text2); font-size: .78rem; }
+.counter-display { display: flex; align-items: baseline; gap: .65rem; padding: .8rem 1rem; border-radius: 8px; background: var(--bg2); }
+.counter-display span { color: var(--accent); font: 700 2rem 'Space Mono', monospace; }
+.counter-display small { color: var(--text2); font-size: .8rem; }
+.event-trace { min-height: 1.4em; padding-left: .65rem; border-left: 2px solid var(--accent); }
+@media (max-width: 520px) { .learning-lab, .deep-dive { padding: .9rem; } .lab-controls { grid-template-columns: 1fr; } }
