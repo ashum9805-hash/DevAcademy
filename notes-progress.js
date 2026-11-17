@@ -14,17 +14,30 @@
     };
     const COURSES = { html: 'HTML', css: 'CSS', js: 'JavaScript' };
 
+    function loadRefinementStyles() {
+        if (document.querySelector('link[data-notes-refinements]')) return;
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = 'notes-refinements.css';
+        stylesheet.dataset.notesRefinements = 'true';
+        document.head.append(stylesheet);
+    }
+
     function readProgress() {
         try {
             const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-            return { lastLesson: parsed.lastLesson || '', completed: Array.isArray(parsed.completed) ? parsed.completed : [] };
+            const allLessons = Object.values(LESSONS).flat();
+            return {
+                lastLesson: allLessons.includes(parsed.lastLesson) ? parsed.lastLesson : '',
+                completed: Array.isArray(parsed.completed) ? [...new Set(parsed.completed)].filter(id => allLessons.includes(id)) : []
+            };
         } catch (error) {
             return { lastLesson: '', completed: [] };
         }
     }
 
     function writeProgress(progress) {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (error) { /* Keep the page usable if storage is blocked. */ }
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (error) { /* Keep browsing available if storage is blocked. */ }
     }
 
     function courseForLesson(id) { return Object.keys(LESSONS).find(course => LESSONS[course].includes(id)); }
@@ -33,15 +46,17 @@
     function recordLastLesson(id) {
         if (!id || !courseForLesson(id)) return;
         const progress = readProgress();
-        progress.lastLesson = id;
-        writeProgress(progress);
+        if (progress.lastLesson !== id) {
+            progress.lastLesson = id;
+            writeProgress(progress);
+        }
     }
 
     function updateDashboard() {
         const progress = readProgress();
         const allLessons = Object.values(LESSONS).flat();
         const total = allLessons.length;
-        const completed = progress.completed.filter(id => allLessons.includes(id));
+        const completed = progress.completed;
         const percent = total ? Math.round(completed.length / total * 100) : 0;
         const count = document.getElementById('progress-count');
         const fill = document.getElementById('progress-fill');
@@ -60,9 +75,13 @@
             if (courseFill) courseFill.style.width = `${Math.round(courseDone / ids.length * 100)}%`;
         });
         document.querySelectorAll('[data-lesson]').forEach(link => {
-            const done = completed.includes(link.dataset.lesson);
+            const id = link.dataset.lesson;
+            const done = completed.includes(id);
             link.classList.toggle('is-complete', done);
-            link.setAttribute('aria-label', `${TITLES[link.dataset.lesson]}${done ? ', completed' : ''}`);
+            link.setAttribute('aria-label', `${TITLES[id] || 'Lesson'}${done ? ', completed' : ''}`);
+        });
+        document.querySelectorAll('[data-section-link]').forEach(link => {
+            link.classList.toggle('is-complete', completed.includes(link.dataset.sectionLink));
         });
 
         const continueTitle = document.getElementById('continue-title');
@@ -73,8 +92,27 @@
             if (continueTitle) continueTitle.textContent = TITLES[progress.lastLesson];
             if (continueDescription) continueDescription.textContent = `${COURSES[course]} · ${completed.includes(progress.lastLesson) ? 'Completed lesson — revisit it or choose another topic.' : 'Continue with your most recently opened lesson.'}`;
             continueLink.href = lessonUrl(progress.lastLesson);
-            continueLink.innerHTML = `Continue learning <span aria-hidden="true">→</span>`;
+            continueLink.innerHTML = 'Continue learning <span aria-hidden="true">→</span>';
         }
+    }
+
+    function updateCompleteButtons() {
+        const progress = readProgress();
+        document.querySelectorAll('[data-complete-lesson]').forEach(button => {
+            const complete = progress.completed.includes(button.dataset.completeLesson);
+            button.textContent = complete ? '✓ Completed · Mark incomplete' : 'Mark lesson complete';
+            button.setAttribute('aria-pressed', String(complete));
+        });
+        const page = window.location.pathname.split('/').pop();
+        const course = page === 'html.html' ? 'html' : page === 'css.html' ? 'css' : page === 'js.html' ? 'js' : '';
+        if (course) {
+            const done = LESSONS[course].filter(id => progress.completed.includes(id)).length;
+            const label = document.querySelector('[data-page-progress]');
+            const fill = document.querySelector('[data-page-fill]');
+            if (label) label.textContent = `${done} / ${LESSONS[course].length} complete`;
+            if (fill) fill.style.width = `${Math.round(done / LESSONS[course].length * 100)}%`;
+        }
+        updateDashboard();
     }
 
     function setupCoursePage() {
@@ -97,12 +135,12 @@
             button.textContent = 'Mark lesson complete';
             button.addEventListener('click', () => {
                 const progress = readProgress();
-                const isComplete = progress.completed.includes(id);
-                progress.completed = isComplete ? progress.completed.filter(item => item !== id) : [...progress.completed, id];
+                progress.completed = progress.completed.includes(id)
+                    ? progress.completed.filter(item => item !== id)
+                    : [...progress.completed, id];
                 progress.lastLesson = id;
                 writeProgress(progress);
                 updateCompleteButtons();
-                button.focus();
             });
             card.append(button);
         });
@@ -116,9 +154,11 @@
         layout.className = 'lesson-layout';
         const sidebar = document.createElement('aside');
         sidebar.className = 'lesson-outline';
+        sidebar.setAttribute('aria-label', `${COURSES[course]} lesson contents`);
         sidebar.innerHTML = `<span class="outline-label">IN THIS COURSE</span><h2>${COURSES[course]} lessons</h2><ol>${links}</ol><a class="outline-library-link" href="notes.html">← All subjects</a>`;
         const reference = document.createElement('aside');
         reference.className = 'lesson-reference';
+        reference.setAttribute('aria-label', 'Learning resources');
         reference.innerHTML = `<div class="reference-card"><span class="reference-icon" aria-hidden="true">✦</span><span class="outline-label">LEARNING TIP</span><h2>Go at your pace</h2><p>Choose any lesson from the outline. Mark it complete when you feel ready, and your progress will be saved in this browser.</p><a href="notes.html">View all subjects →</a></div><div class="reference-progress"><strong>Course progress</strong><span data-page-progress>0 / ${ids.length} complete</span><span class="mini-track"><i data-page-fill></i></span></div>`;
         layout.append(sidebar, originalContent, reference);
         main.append(layout);
@@ -126,43 +166,67 @@
         sidebar.querySelectorAll('[data-section-link]').forEach(link => link.addEventListener('click', () => recordLastLesson(link.dataset.sectionLink)));
         cards.forEach(card => {
             card.addEventListener('click', event => {
-                if (event.target.closest('a, button')) return;
-                recordLastLesson(card.id);
+                if (!event.target.closest('a, button')) recordLastLesson(card.id);
             });
         });
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        recordLastLesson(entry.target.id);
-                        sidebar.querySelectorAll('[data-section-link]').forEach(link => link.classList.toggle('is-current', link.dataset.sectionLink === entry.target.id));
-                    }
+                    if (!entry.isIntersecting) return;
+                    recordLastLesson(entry.target.id);
+                    sidebar.querySelectorAll('[data-section-link]').forEach(link => {
+                        const current = link.dataset.sectionLink === entry.target.id;
+                        link.classList.toggle('is-current', current);
+                        if (current) link.setAttribute('aria-current', 'location');
+                        else link.removeAttribute('aria-current');
+                    });
                 });
             }, { rootMargin: '-15% 0px -70% 0px' });
             cards.forEach(card => observer.observe(card));
         }
         updateCompleteButtons();
-        if (window.location.hash && ids.includes(decodeURIComponent(window.location.hash.slice(1)))) {
-            recordLastLesson(decodeURIComponent(window.location.hash.slice(1)));
+        if (window.location.hash) {
+            const target = decodeURIComponent(window.location.hash.slice(1));
+            if (ids.includes(target)) recordLastLesson(target);
         }
     }
 
-    function updateCompleteButtons() {
-        const progress = readProgress();
-        document.querySelectorAll('[data-complete-lesson]').forEach(button => {
-            const complete = progress.completed.includes(button.dataset.completeLesson);
-            button.textContent = complete ? '✓ Completed · Mark incomplete' : 'Mark lesson complete';
-            button.setAttribute('aria-pressed', String(complete));
+    function setupLessonSearch() {
+        const grid = document.querySelector('.course-grid');
+        if (!grid || document.querySelector('.library-search')) return;
+        const search = document.createElement('div');
+        search.className = 'library-search';
+        search.innerHTML = '<label for="lesson-search">FIND A LESSON</label><input id="lesson-search" type="search" placeholder="Try “forms”, “box model”, or “events”…" autocomplete="off" aria-controls="course-grid">';
+        grid.id = 'course-grid';
+        const status = document.createElement('p');
+        status.className = 'library-search-status';
+        status.setAttribute('aria-live', 'polite');
+        status.id = 'lesson-search-status';
+        search.querySelector('input').setAttribute('aria-describedby', status.id);
+        const noResults = document.createElement('p');
+        noResults.className = 'library-no-results';
+        noResults.hidden = true;
+        noResults.textContent = 'No lessons match that search. Try another topic or clear the search.';
+        grid.before(search, status);
+        grid.after(noResults);
+
+        const input = search.querySelector('input');
+        input.addEventListener('input', () => {
+            const query = input.value.trim().toLocaleLowerCase();
+            let matches = 0;
+            grid.querySelectorAll('.course-panel').forEach(panel => {
+                let courseMatches = 0;
+                panel.querySelectorAll('.lesson-list li').forEach(item => {
+                    const match = !query || item.textContent.toLocaleLowerCase().includes(query);
+                    item.classList.toggle('is-filtered-out', !match);
+                    if (match) courseMatches += 1;
+                });
+                panel.classList.toggle('is-filtered-empty', courseMatches === 0);
+                matches += courseMatches;
+            });
+            status.textContent = query ? `${matches} lesson${matches === 1 ? '' : 's'} found` : '';
+            noResults.hidden = matches !== 0;
         });
-        const course = window.location.pathname.includes('html.html') ? 'html' : window.location.pathname.includes('css.html') ? 'css' : window.location.pathname.includes('js.html') ? 'js' : '';
-        if (course) {
-            const done = LESSONS[course].filter(id => progress.completed.includes(id)).length;
-            const label = document.querySelector('[data-page-progress]');
-            const fill = document.querySelector('[data-page-fill]');
-            if (label) label.textContent = `${done} / ${LESSONS[course].length} complete`;
-            if (fill) fill.style.width = `${Math.round(done / LESSONS[course].length * 100)}%`;
-        }
-        updateDashboard();
     }
 
     function addLibraryMenuLink() {
@@ -174,8 +238,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        loadRefinementStyles();
         addLibraryMenuLink();
         setupCoursePage();
+        setupLessonSearch();
         updateDashboard();
     });
 })();
