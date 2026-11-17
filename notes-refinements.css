@@ -1,0 +1,107 @@
+/* Competition-ready lesson layout, course navigation, and library search refinements. */
+:root { scroll-behavior: smooth; }
+
+/* Give lesson pages room for the outline and contextual reference rail. */
+.notes-container:has(.lesson-layout) {
+    width: min(1540px, calc(100% - 3rem));
+    max-width: none;
+    padding: 2rem 0 4rem;
+}
+.lesson-layout {
+    display: grid;
+    grid-template-columns: minmax(205px, 250px) minmax(0, 760px) minmax(205px, 250px);
+    justify-content: center;
+    align-items: start;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+.lesson-column { min-width: 0; }
+.lesson-outline, .lesson-reference { position: sticky; top: 6rem; max-height: calc(100vh - 7rem); overflow: auto; scrollbar-width: thin; }
+.lesson-outline {
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 8px 26px rgba(20, 20, 35, .045);
+}
+.outline-label { display: block; color: var(--text2); font: 700 .64rem 'Space Mono', monospace; letter-spacing: .12em; }
+.lesson-outline h2 { margin: .45rem 0 1rem; font: 700 1rem 'Space Mono', monospace; }
+.lesson-outline ol { list-style: none; display: grid; gap: .22rem; }
+.lesson-outline li a {
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr);
+    gap: .5rem;
+    align-items: start;
+    padding: .55rem .5rem;
+    border-radius: 7px;
+    color: var(--text2);
+    font-size: .79rem;
+    line-height: 1.4;
+    text-decoration: none;
+}
+.lesson-outline li a span { color: var(--accent); font: 700 .65rem 'Space Mono', monospace; padding-top: .12rem; }
+.lesson-outline li a:hover, .lesson-outline li a:focus-visible { background: var(--bg2); color: var(--text); outline-color: var(--accent); }
+.lesson-outline li a.is-current { background: color-mix(in srgb, var(--accent) 10%, var(--card-bg)); color: var(--text); font-weight: 700; }
+.lesson-outline li a.is-complete span::after { content: ' ✓'; color: #248a52; }
+.outline-library-link { display: block; margin-top: 1rem; padding-top: .85rem; border-top: 1px solid var(--border); color: var(--accent); font-size: .8rem; font-weight: 700; text-decoration: none; }
+.reference-card, .reference-progress { padding: 1.2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); }
+.reference-icon { display: block; margin-bottom: .6rem; color: var(--accent); font-size: 1.5rem; }
+.reference-card h2 { margin: .55rem 0; font: 700 1rem 'Space Mono', monospace; }
+.reference-card p { color: var(--text2); font-size: .82rem; line-height: 1.65; }
+.reference-card > a { display: inline-block; margin-top: .9rem; color: var(--accent); font-size: .8rem; font-weight: 700; text-decoration: none; }
+.reference-progress { display: grid; gap: .6rem; margin-top: .8rem; font-size: .78rem; }
+.reference-progress > span:nth-child(2) { color: var(--text2); font-size: .72rem; }
+.reference-progress .mini-track { height: 6px; }
+.lesson-complete-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1rem;
+    padding: .65rem .9rem;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--accent);
+    font: 700 .8rem 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+.lesson-complete-button:hover, .lesson-complete-button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.lesson-complete-button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.note-card { scroll-margin-top: 6.5rem; }
+
+/* Searchable lesson library. */
+.library-search { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.2rem; padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); }
+.library-search label { flex: 0 0 auto; color: var(--text2); font: 700 .72rem 'Space Mono', monospace; }
+.library-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; }
+.library-search input::placeholder { color: var(--text2); opacity: .8; }
+.library-search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
+.library-search-status { min-height: 1.4em; margin: -.55rem 0 .7rem; color: var(--text2); font-size: .78rem; }
+.course-panel.is-filtered-empty { display: none; }
+.lesson-list li.is-filtered-out { display: none; }
+.library-no-results { padding: 1.5rem; border: 1px dashed var(--border); border-radius: 10px; color: var(--text2); text-align: center; }
+.library-no-results[hidden] { display: none; }
+
+@media (max-width: 1180px) {
+    .notes-container:has(.lesson-layout) { width: min(100% - 2.5rem, 1050px); }
+    .lesson-layout { grid-template-columns: minmax(190px, 230px) minmax(0, 760px); }
+    .lesson-reference { display: none; }
+}
+@media (max-width: 760px) {
+    .notes-container:has(.lesson-layout) { width: min(100% - 2rem, 680px); padding-top: 1.2rem; }
+    .lesson-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .lesson-outline { position: static; max-height: none; }
+    .lesson-outline ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lesson-outline li a { height: 100%; font-size: .74rem; }
+    .note-card { scroll-margin-top: 1rem; }
+    .library-search { align-items: flex-start; flex-direction: column; gap: .25rem; }
+}
+@media (max-width: 480px) {
+    .notes-container:has(.lesson-layout) { width: calc(100% - 1.25rem); }
+    .lesson-outline { padding: .9rem; }
+    .lesson-outline ol { grid-template-columns: 1fr; }
+    .lesson-outline li a { padding: .48rem; }
+    .lesson-complete-button { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
